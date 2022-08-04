@@ -134,7 +134,7 @@ public class TuitionManagement {
 	
 		Student student = new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest);
 		return student;
-		
+		//test1
 	}
 	public static void addStudentDetails(ArrayList<Student> studentDetailsList, Student student) {
 		studentDetailsList.add(student);
