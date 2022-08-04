@@ -84,7 +84,7 @@ public class TuitionManagementTest {
 		allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
 		deleteOneTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList - 1);
 		
-		assertEquals("Check that deleteOneTuitionTimetable and allTuitionTimetable displays the same number of items.", deleteOneTuitionTimetable, allTuitionTimetable);
+		assertEquals("Check that allTuitionTimetable and deleteOneTuitionTimetable displays the same number of items.", allTuitionTimetable, deleteOneTuitionTimetable);
 	}
 	
 	@Test
