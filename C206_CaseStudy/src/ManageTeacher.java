@@ -52,30 +52,17 @@ public class ManageTeacher {
 	
 	
 	
-	public static Camcorder inputCamcorder() {
-		String tag = Helper.readString("Enter asset tag > ");
-		String description = Helper.readString("Enter description > ");
-		int zoom = Helper.readInt("Enter optical zoom > ");
-
-		Camcorder cc= new Camcorder(tag, description, zoom);
-		return cc;
-		
-	}
-	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
-		
-		camcorderList.add(cc);
-		
-	}
+	public static Teacher addTeacher() {
+		String name = Helper.readString("Enter name > ");
+		String gender = Helper.readString("Enter gender > ");
+		String email = Helper.readString("Enter email > ");
+		String qualification = Helper.readString("Enter teacher qualification > ");
+		String subjectGroup = Helper.readString("Enter teacher subject group >");
 	
-	public static Chromebook inputChromebook() {
-		String tag = Helper.readString("Enter asset tag > ");
-		String description = Helper.readString("Enter description > ");
-		String os = Helper.readString("Enter operating system > ");
+		Teacher teacher = new Teacher(name, gender, email, qualification, subjectGroup);
+		return teacher;
+	}
 
-		Chromebook cb= new Chromebook(tag, description, os);
-		return cb;
-		
-	}	
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 
 		chromebookList.add(cb);
