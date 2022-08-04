@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 
 public class TuitionManagement {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		
+		ArrayList<Tuition> tuitonList = new ArrayList<Tuition>();
 		
 		
 	}
@@ -23,7 +24,6 @@ public class TuitionManagement {
 		System.out.println("4 - Register for Tuition");
 		System.out.println("5 - View Registered Tuitions");
 		System.out.println("6 - Delete Registered Tuitions");
-		System.out.println("q - Quit program");
 		System.out.println("------------------------------");
 	}
 	
@@ -34,7 +34,6 @@ public class TuitionManagement {
 		System.out.println("4 - Add Teacher");
 		System.out.println("5 - View Teacher");
 		System.out.println("6 - Delete Teacher");
-		System.out.println("q - Quit program");
 		System.out.println("------------------------------");
 	}
 	
@@ -43,7 +42,6 @@ public class TuitionManagement {
 		System.out.println("2 - Add Tuition Information");
 		System.out.println("3 - View Tuition Information");
 		System.out.println("4 - Delete Tuition Information");
-		System.out.println("q - Quit program");
 		System.out.println("------------------------------");
 	}
 	
