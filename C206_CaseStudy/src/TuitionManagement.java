@@ -6,15 +6,15 @@ public class TuitionManagement {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
-		ArrayList<TuitionTimetable> tuitionTimetableList = new ArrayList<TuitionTimetable>();
+		ArrayList<managerTimetable> tuitionTimetableList = new ArrayList<managerTimetable>();
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>();
 
 		//dummy records
 		tuitionList.add(new Tuition("E01B", "Grammar Practice", "English", "Master your grammar", "1 hour", "Basic Level"));
 		tuitionList.add(new Tuition("E02A", "Vocabulary", "English", "Train your vocabulary", "1 hour", "Advanced Level"));
 		
-		tuitionTimetableList.add(new TuitionTimetable(1, 180.0, "01/01/2022", "01/03/2022", "Online"));
-		tuitionTimetableList.add(new TuitionTimetable(2, 180.0, "01/04/2022", "01/07/2022", "F2F"));
+		tuitionTimetableList.add(new managerTimetable(1, 180.0, "01/01/2022", "01/03/2022", "Online"));
+		tuitionTimetableList.add(new managerTimetable(2, 180.0, "01/04/2022", "01/07/2022", "F2F"));
 		
 		registrationList.add(new Registration(1, 1, "student1@gmail.com", "01/03/2022"));
 		registrationList.add(new Registration(2, 2, "student2@gmail.com", "01/03/2022"));
@@ -34,10 +34,9 @@ public class TuitionManagement {
 				studentChoice = Helper.readInt("Enter your choice: ");
 				System.out.println("------------------------------");
 				while (studentChoice != 6) {
-					if () { 
+					if (studentChoice == 1) { 
 						
-					}
-					else if studentChoice == 4) {
+					} else if (studentChoice == 4) {
 						registerTuiton(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
@@ -246,7 +245,7 @@ public class TuitionManagement {
 	
 	
     //================================= Option 1 Add tuition timetable (menuManager()) JOSEPH =================================
-	public static void addTuitionTimetable(ArrayList<TuitionTimetable> tuitionTimetableList) {
+	public static void addTuitionTimetable(ArrayList<managerTimetable> tuitionTimetableList) {
 		
 		int ttID = Helper.readInt("Enter tuition timetable ID: ");
 		double price = Helper.readDouble("Enter tuition price: ");
@@ -254,14 +253,14 @@ public class TuitionManagement {
 		String end_date = Helper.readString("Enter tuition ending date: ");
 		String mode = Helper.readString("Enter tuition mode (Online/Mixed/FTF): ");
 		
-		tuitionTimetableList.add(new TuitionTimetable(ttID, price, start_date, end_date, mode));
+		tuitionTimetableList.add(new managerTimetable(ttID, price, start_date, end_date, mode));
 		
 		System.out.println("Timetable has been added.");
 		System.out.println("------------------------------");
 	}
 	
 	//================================= Option 2 View tuition timetable (menuManager()) JOSEPH =================================
-	public static void viewTuitionTimetable(ArrayList<TuitionTimetable> tuitionTimetableList) {
+	public static void viewTuitionTimetable(ArrayList<managerTimetable> tuitionTimetableList) {
 			
 		for (int i = 0; i < tuitionTimetableList.size(); i++) {
 			System.out.println("Tuition Timetable ID: " + tuitionTimetableList.get(i).getTtId());
@@ -274,7 +273,7 @@ public class TuitionManagement {
 	}
 	
 	//================================= Option 3 Delete tuition timetable (menuManager()) JOSEPH =================================
-	public static void deleteTuitionTimetable(ArrayList<TuitionTimetable> tuitionTimetableList) {
+	public static void deleteTuitionTimetable(ArrayList<managerTimetable> tuitionTimetableList) {
 		
 		int del_ttID = Helper.readInt("Enter the tuition timetable ID you want to delete: ");
 		
