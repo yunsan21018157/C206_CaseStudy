@@ -6,16 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/*
- * I declare that this code was written by me. 
- * I do not copy or allow others to copy my code. 
- * I understand that copying code is considered as plagiarism.
- * 
- * Student Name: Sze Yunsan
- * Student ID: 21018157
- * Class: W64N
- * Date/Time created: Thursday 04-08-2022 13:47
- */
 
 /**
  * @author 21018157

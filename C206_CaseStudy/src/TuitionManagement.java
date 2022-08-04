@@ -340,6 +340,7 @@ public class TuitionManagement {
 		}
 	}
 	
+	
 	//================================= Option 4 Add teacher (menuManager()) JAYDEN =================================
 	public static void addTeacher(ArrayList<Teacher> teacherList) {
 		String name = Helper.readString("Enter name > ");
