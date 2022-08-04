@@ -17,7 +17,7 @@ public class ManageTeacher {
 
 		while (option != OPTION_QUIT) {
 
-			ManageTeacher.menu();
+			ManageTeacher.menuManager();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == OPTION_VIEW) {
@@ -26,85 +26,22 @@ public class ManageTeacher {
 
 			} else if (option == OPTION_ADD) {
 				// Add a new item
-				ManageTeacher.setHeader("ADD");			
-				itemTypeMenu();
-				
-				int teacherType = Helper.readInt("Enter option to select item type > ");
+				ManageTeacher.setHeader("ADD"); {
+					Teacher t = addTeacher();
+					ManageTeacher.addTeacher(TeacherList, t);
+					System.out.println("Teacher");
 
-				if (itemType == 1) {
-					Teacher t = inputTeacher();
-					ManageTeacher.addTeacher(TeacherList, cc);
-					System.out.println("Camcorder added");
 
-				} else if (itemType == 2) {
-					// Add Chromebook
-					Chromebook cb = inputChromebook();
-					ResourceCentre.addChromebook(chromebookList, cb);
-					System.out.println("Chromebook added");
-
-				} else {
-					System.out.println("Invalid type");
-				}
-
-			} else if (option == OPTION_LOAN) {
-				// Loan item
-				ResourceCentre.setHeader("LOAN");			
-				itemTypeMenu();
-				
-				int itemType = Helper.readInt("Enter option to select item type > ");
-
-				if (itemType == 1) {
-					// Loan camcorder
-					ResourceCentre.loanCamcorder(camcorderList);
-				} else if (itemType == 2) {
-					// Loan Chromebook
-					ResourceCentre.loanChromebook(chromebookList);
-				} else {
-					System.out.println("Invalid type");
-				}
-
-			} else if (option == OPTION_RETURN) {
-				// Return item
-				ResourceCentre.setHeader("RETURN");				
-				itemTypeMenu();
-				
-				int itemType = Helper.readInt("Enter option to select item type > ");
-				if (itemType == 1) {
-					// Return camcorder
-					ResourceCentre.returnCamcorder(camcorderList);
-				} else if (itemType == 2) {
-					// Return Chromebook
-					ResourceCentre.returnChromebook(chromebookList);
-				} else {
-					System.out.println("Invalid type");
-				}
-
-			} else if (option == OPTION_QUIT) {
-				System.out.println("Bye!");
-			} else {
-				System.out.println("Invalid option");
-			}
-
-		}
-
-	}
-
-	public static void itemTypeMenu() {
-		ResourceCentre.setHeader("ITEM TYPES");
-		System.out.println("1. Camcorder");
-		System.out.println("2. Chromebook");
-	}
-
-	public static void menu() {
-		ResourceCentre.setHeader("RESOURCE CENTRE APP");
-		System.out.println("1. Display Inventory");
-		System.out.println("2. Add item");
-		System.out.println("3. Loan item");
-		System.out.println("4. Return item");
-		System.out.println("5. Quit");
-		Helper.line(80, "-");
-
-	}
+					public static void menuManager() {
+						System.out.println("1 - Add Tuition Timetable");
+						System.out.println("2 - View Tuition Timetable");
+						System.out.println("3 - Delete Tuition Timetable");
+						System.out.println("4 - Add Teacher");
+						System.out.println("5 - View Teacher");
+						System.out.println("6 - Delete Teacher");
+						System.out.println("7 - Quit program");
+						System.out.println("------------------------------");
+					}
 	
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
