@@ -62,7 +62,23 @@ public class TuitionManagement {
 	
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
+	public static TuitionTimeTable registerTuiton() {
+		String regId = Helper.readString("Enter registration ID > ");
+		String ttId = Helper.readString("Enter tuition timetable ID > ");
+		String email = Helper.readString("Enter student email > ");
+		String date = Helper.readString("Enter date > ");
+		
+		
+		TuitionTimeTable tuitionTT = new Tuition(regId, ttId, email, date);
+		return tuitionTT;
+	}
 	
+	public static void addTuitionTimeTable(ArrayList<TuitionTimeTable> tuitionList, Tuition tuition) {
+			
+		tuitionList.add(tuition);
+			
+	}
+}
 	
 	//================================= Option 5 View tuition registration (menuStudent()) YIXUN ==================================
 	
