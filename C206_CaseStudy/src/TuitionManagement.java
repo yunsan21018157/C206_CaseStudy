@@ -416,7 +416,7 @@ public class TuitionManagement {
 		return output;
 	}
 
-	//================================= Option 5 Delete tuition info (menuAdmin()) YUNSAN =================================
+	//================================= Option 5 Delete tuition info (menuAdmin()) YUNSAN ================================
 	public static void deleteTuition(ArrayList<Tuition> tuitionList) {
 			
 			String delCode = Helper.readString("Enter tuition code to delete > ");
