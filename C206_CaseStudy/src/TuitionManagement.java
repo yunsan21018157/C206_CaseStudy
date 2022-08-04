@@ -24,11 +24,10 @@ public class TuitionManagement {
 	public static void menuStudent() {
 		System.out.println("1 - Register Student Account");
 		System.out.println("2 - View Student Account");
-		System.out.println("3 - Delete Student Account");
-		System.out.println("4 - Register for Tuition");
-		System.out.println("5 - View Tuition Registration");
-		System.out.println("6 - Delete Tuition registration");
-		System.out.println("7 - Quit program");
+		System.out.println("3 - Register for Tuition");
+		System.out.println("4 - View Tuition Registration");
+		System.out.println("5 - Delete Tuition registration");
+		System.out.println("6 - Quit program");
 		System.out.println("------------------------------");
 	}
 	
@@ -45,10 +44,11 @@ public class TuitionManagement {
 	
 	public static void menuAdmin() {
 		System.out.println("1 - Register Student Account");
-		System.out.println("2 - Add Tuition Information");
-		System.out.println("3 - View Tuition Information");
-		System.out.println("4 - Delete Tuition Information");
-		System.out.println("5 - Quit program");
+		System.out.println("2 - Delete Student Account");
+		System.out.println("3 - Add Tuition Information");
+		System.out.println("4 - View Tuition Information");
+		System.out.println("5 - Delete Tuition Information");
+		System.out.println("6 - Quit program");
 		System.out.println("------------------------------");
 	}
 	
@@ -58,7 +58,7 @@ public class TuitionManagement {
 	//================================= Option 2 View student (menuStudent()) AHMAD ====================================
 	
 	
-	//================================= Option 3 Delete student (menuStudent()) AHMAD ==================================
+	//================================= Option 3 Delete student (menuAdmin()) AHMAD ==================================
 	
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
