@@ -5,12 +5,15 @@ public class TuitionManagement {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ArrayList<TuitionTimeTable> tuitonTimetableList = new ArrayList<TuitionTimeTable>();
+		ArrayList<TuitionTimetable> tuitionTimetableList = new ArrayList<TuitionTimetable>();
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>();
 
 		//dummy records
-		tuitionList.add(new Tuition("E01", "Grammar Practice", "English", "Master your grammar", "1 hour", "Basic Level"));
+		tuitionList.add(new Tuition("E01B", "Grammar Practice", "English", "Master your grammar", "1 hour", "Basic Level"));
+		tuitionList.add(new Tuition("E02A", "Vocabulary", "English", "Train your vocabulary", "1 hour", "Advanced Level"));
 		
+		tuitionTimetableList.add(new TuitionTimetable(1, 180.0, "01/01/2022", "01/03/2022", "Online"));
+		tuitionTimetableList.add(new TuitionTimetable(2, 180.0, "01/04/2022", "01/07/2022", "F2F"));
 	}
 	
 	public static void role() {
@@ -70,18 +73,18 @@ public class TuitionManagement {
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
 	
-	public static TuitionTimeTable registerTuiton() {
+	public static TuitionTimetable registerTuiton() {
 		
 		String regId = Helper.readString("Enter registration ID > ");
 		String ttId = Helper.readString("Enter tuition timetable ID > ");
 		String email = Helper.readString("Enter student email > ");
 		String date = Helper.readString("Enter date > ");
 		
-		TuitionTimeTable tuitionTT = new Tuition(regId, ttId, email, date);
+		TuitionTimetable tuitionTT = new Tuition(regId, ttId, email, date);
 		return tuitionTT;
 	}
 	
-	public static void addTuitionTimeTable(ArrayList<TuitionTimeTable> tuitionList, Tuition tuition) {
+	public static void addTuitionTimeTable(ArrayList<TuitionTimetable> tuitionList, Tuition tuition) {
 			
 		tuitionList.add(tuition);
 			
@@ -132,6 +135,9 @@ public class TuitionManagement {
 		String preRequisite = Helper.readString("Enter pre-requisite (Basic/ Advanced) > ");
 		
 		Tuition tuition = new Tuition(code, title, name, desc, duration, preRequisite);
+		
+		//for (int i = 0; i < tuitionList.size(); i++) {
+			
 		return tuition;
 	}
 	
@@ -161,7 +167,33 @@ public class TuitionManagement {
 	}
 
 	//================================= Option 4 Delete tuition info (menuAdmin()) YUNSAN =================================
+	public static boolean doDeleteTuition(ArrayList<Tuition> tuitionList, String tag) {
+		boolean isDeleted = false;
+
+		for (int i = 0; i < tuitionList.size(); i++) {
+			String code = tuitionList.get(i).getCode();
+//			if (code == ) {
+//				tuitionList.get(i).setIsAvailable(false);
+//				camcorderList.get(i).setDueDate("");
+				isDeleted = true;
+				
+			}
+		return isDeleted;
 		
+	}
+
+	public static void deleteTuition(ArrayList<Tuition> tuitionList) {
+		TuitionManagement.viewTuition(tuitionList);
+		String code = Helper.readString("Enter tuition code > ");
+		Boolean isDeleted = doDeleteTuition(tuitionList, code);
+		
+		if (isDeleted == false) {
+			System.out.println("Invalid asset tag");
+		} else {
+			System.out.println("Tuition " + code + " deleted");
+		}
+	}
+
 		
 	//================================= Option 5 QUIT  =================================
 }
