@@ -41,7 +41,7 @@ public class Registration {
 	public String getStatus() { 
 		return status;
 	}
-	public String y { 
+	public String getDate() { 
 		return date;
 	}
 }

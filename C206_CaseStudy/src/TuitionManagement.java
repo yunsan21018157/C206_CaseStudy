@@ -8,6 +8,7 @@ public class TuitionManagement {
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 		ArrayList<managerTimetable> tuitionTimetableList = new ArrayList<managerTimetable>();
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>();
+		ArrayList<Student> studentDetailsList = new ArrayList<Student>();
 
 		//dummy records
 		tuitionList.add(new Tuition("E01B", "Grammar Practice", "English", "Master your grammar", "1 hour", "Basic Level"));
@@ -37,7 +38,7 @@ public class TuitionManagement {
 					if (studentChoice == 1) { 
 						
 					} else if (studentChoice == 3) {
-						registerTuiton(registrationList);
+						registerTuition(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						System.out.println("------------------------------");
@@ -90,7 +91,43 @@ public class TuitionManagement {
 			} else if (role == 3) {
 				menuAdmin();
 				adminChoice = Helper.readInt("Enter your choice: ");
-			} else if (role == 4) {
+				System.out.println("------------------------------");
+				while (adminChoice != 6) {
+					if (adminChoice == 1) {
+						addStudentDetails(studentDetailsList);
+						System.out.println("------------------------------");
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
+						System.out.println("------------------------------");
+					} else if (adminChoice == 2) {
+						deleteStudentDetails(studentDetailsList);
+						System.out.println("------------------------------");
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
+						System.out.println("------------------------------");
+					} else if (adminChoice == 3) {
+						addTuitionInformation(tuitionList);
+						System.out.println("------------------------------");
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
+					} else if (adminChoice == 4) {
+						retrieveTuition(tuitionList);
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
+					} else if (adminChoice == 5) {
+						deleteTuition(tuitionList);
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
+						System.out.println("------------------------------");
+					} else {
+						adminChoice = Helper.readInt("Invalid option, enter option again: ");
+						System.out.println("------------------------------");
+					}
+				} System.out.println("Account Logged out.");
+				System.out.println("------------------------------");
+				role();
+				role = Helper.readInt("Enter role index: ");
+		    } else if (role == 4) {
 				System.out.println("Program Ended.");
 			} else {
 				role = Helper.readInt("Invalid Index, enter role index again: ");
@@ -145,7 +182,7 @@ public class TuitionManagement {
 
 
 	//================================= Option 1 Add student (menuStudent()) AHMAD ====================================
-	public static Student inputStudentDetails() {
+	public static void addStudentDetails(ArrayList<Student> studentDetailsList) {
 		String sName = Helper.readString("Enter Student Name > ");
 		char sGender = Helper.readChar("Enter Gender (M/F) > ");
 		String sEmail = Helper.readString("Enter Email > ");
@@ -154,12 +191,11 @@ public class TuitionManagement {
 		String sInterest = Helper.readString("Enter the subject you are interested in > ");
 	
 		Student student = new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest);
-		return student;
-		//test1
-	}
-	public static void addStudentDetails(ArrayList<Student> studentDetailsList, Student student) {
+		
 		studentDetailsList.add(student);
 	}
+		
+		//test1
 	
 	//================================= Option 2 View student (menuStudent()) AHMAD ====================================
 	public static String retrieveAllStudent(ArrayList<Student> studentDetailsList) {
@@ -196,7 +232,7 @@ public class TuitionManagement {
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
 	
-	public static void registerTuiton(ArrayList<Registration> registrationList) {
+	public static void registerTuition(ArrayList<Registration> registrationList) {
 		
 		int regId = Helper.readInt("Enter registration ID > ");
 		int ttId = Helper.readInt("Enter tuition timetable ID > ");
@@ -338,12 +374,11 @@ public class TuitionManagement {
 		}
 	}
 	
-	
 	//================================= Option 1 Register student acc (menuAdmin()) //same as student =================================
 	
 	
-	//================================= Option 2 Add tuition info (menuAdmin()) YUNSAN =================================
-	public static Tuition inputTuition() {
+	//================================= Option 3 Add tuition info (menuAdmin()) YUNSAN =================================
+	public static void addTuitionInformation(ArrayList<Tuition> tuitionList) {
 		String code = Helper.readString("Enter tuition code > ");
 		String title = Helper.readString("Enter tuition title > ");
 		String name = Helper.readString("Enter subject group name > ");
@@ -351,68 +386,56 @@ public class TuitionManagement {
 		String duration = Helper.readString("Enter tuition duration > ");
 		String preRequisite = Helper.readString("Enter pre-requisite (Basic/ Advanced) > ");
 		
-		
-		
 		Tuition tuition = new Tuition(code, title, name, desc, duration, preRequisite);
 		
-		
-			
-		return tuition;
+		tuitionList.add(tuition);
 	}
 	
-	public static void addTuition(ArrayList<Tuition> tuitionList, Tuition tuition) {
-			
-		tuitionList.add(tuition);
-			
-	}
-
-	//================================= Option 3 View tuition info (menuAdmin()) YUNSAN =================================
+	//================================= Option 4 View tuition info (menuAdmin()) YUNSAN =================================
 	public static String retrieveTuition(ArrayList<Tuition> tuitionList) {
 		String output = "";
-	
+		String code = "";
+		String title = "";
+		String name = "";
+		String des = "";
+		String duration = "";
+		String pre_req = "";
+		
 		for (int i = 0; i < tuitionList.size(); i++) {
-	
-			output += String.format("%-84s\n", tuitionList.get(i).toString());
+			output = String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", "CODE", "TITLE",
+					"NAME", "DESCRIPTION", "DURATION", "PRE-REQUISITE");
+			code = tuitionList.get(i).getCode();
+			title = tuitionList.get(i).getTitle();
+			name = tuitionList.get(i).getName();
+			des = tuitionList.get(i).getDesc();
+			duration = tuitionList.get(i).getDuration();
+			pre_req = tuitionList.get(i).getPreRequisite();
+			output += String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", code, title, name, des, duration, pre_req);
 		}
+		System.out.println(output);
 		return output;
 	}
-	
-	public static void viewTuition(ArrayList<Tuition> tuitionList) {
-		TuitionManagement.setHeader("TUITION LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "TITLE",
-				"NAME", "DESCRIPTION","DURATION", "PRE-REQUISITE");
-		 output += retrieveTuition(tuitionList);	
-		System.out.println(output);
-	}
 
-	//================================= Option 4 Delete tuition info (menuAdmin()) YUNSAN =================================
-	public static boolean doDeleteTuition(ArrayList<Tuition> tuitionList, String tag) {
-		boolean isDeleted = false;
-
-		for (int i = 0; i < tuitionList.size(); i++) {
-			String code = tuitionList.get(i).getCode();
-//			if (code == ) {
-//				tuitionList.get(i).setIsAvailable(false);
-//				camcorderList.get(i).setDueDate("");
-				isDeleted = true;
-				
-			}
-		return isDeleted;
-		
-	}
-
+	//================================= Option 5 Delete tuition info (menuAdmin()) YUNSAN =================================
 	public static void deleteTuition(ArrayList<Tuition> tuitionList) {
-		TuitionManagement.viewTuition(tuitionList);
-		String code = Helper.readString("Enter tuition code > ");
-		Boolean isDeleted = doDeleteTuition(tuitionList, code);
-		
-		if (isDeleted == false) {
-			System.out.println("Invalid asset tag");
-		} else {
-			System.out.println("Tuition " + code + " deleted");
+			
+			String delCode = Helper.readString("Enter tuition code to delete > ");
+			
+			String code = "";
+			
+			for (int i = 0; i < tuitionList.size(); i++) {
+				 code = tuitionList.get(i).getCode();
+				if (code == delCode) {
+					tuitionList.remove(i);
+					System.out.println("Tuition " + delCode + " deleted");
+				
+				} else {
+					System.out.println("Invalid tuition code");
+				}
+			}
 		}
-	}
+
 
 		
-	//================================= Option 5 QUIT  ==================================
+	//================================= Option 6 QUIT  ==================================
 }
