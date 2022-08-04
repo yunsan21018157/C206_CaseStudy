@@ -109,9 +109,67 @@ public class TuitionManagementTest {
 		    personService.deleteFromPerson(null);
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
+	
+	
+	
+	
+	@Test
+	public void testAddTuitionInformation() {
+		// Tuition list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid Tuition arraylist to add to", tuitionList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		TuitionManagement.addTuitionInformation(tuitionList, t1);
+		assertEquals("Check that Tuition arraylist size is 1", 1, tuitionList.size());
+		assertSame("Check that Tuition is added", t1, tuitionList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		TuitionManagement.addTuitionInformation(tuitionList, t1);
+		assertEquals("Check that Tuition arraylist size is 2", 2, tuitionList.size());
+		assertSame("Check that Tuition is added", t2, tuitionList.get(1));
+	}
+	
+	@Test
+	public void testRetrieveTuitionInformation() {
+		// Test if tuition list is not null but empty -boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		//test if the list of tuitions retrieved from the SourceCentre is empty - boundary
+		String allTuition= TuitionManagement.retrieveTuition(tuitionList);
+		String testOutput = "";
+		assertEquals("Check that RetrieveAllTuitionList", testOutput, allTuition);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		TuitionManagement.addTuitionInformation(tuitionList, t1);
+		TuitionManagement.addTuitionInformation(tuitionList, t2);
+		assertEquals("Test that tuition arraylist size is 2", 2, tuitionList.size());
+		
+		//test if the expected output string same as the list of tuition retrieved from the SourceCentre	
+		allTuition= TuitionManagement.retrieveTuition(tuitionList);
+		testOutput = String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", "CODE", "TITLE", "NAME", "DESCRIPTION", "DURATION", "PRE-REQUISITE");
+		testOutput += String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", "CODE", "TITLE", "NAME", "DESCRIPTION", "DURATION", "PRE-REQUISITE");
+	
+		assertEquals("Test that ViewAllTuitionlist", testOutput, allTuition);
+	}
+	
+	@Test
+	public void testDeleteTuition() {
+		// Test if tuition list is not null but empty -boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		TuitionManagement.addTuitionInformation(tuitionList, t1);
+		TuitionManagement.addTuitionInformation(tuitionList, t2);
+		
+		TuitionManagement.deleteTuition(tuitionList, "E01B");
+		TuitionManagement.deleteTuition(tuitionList, "E02A");
+		
+		assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());
+		
+	}
+
+
 	@After
 	public void tearDown() throws Exception {
 	}
