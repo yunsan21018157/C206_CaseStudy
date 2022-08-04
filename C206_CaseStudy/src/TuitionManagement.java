@@ -234,6 +234,21 @@ public class TuitionManagement {
 	}
 		
 	//================================= Option 6 Delete teacher (menuManager()) JAYDEN =================================
+	public static void deleteTeacher(ArrayList<Teacher> teacherList) {
+		
+		String delTeacher = Helper.readString("Enter the teacher name you want to delete: ");
+		
+		for (int i = 0; i < teacherList.size(); i++) {
+			String delName = teacherList.get(i).getName();
+			if (delTeacher == delName) {
+				teacherList.remove(i);
+				System.out.println("Teacher removed.");
+				System.out.println("------------------------------");
+			} else {
+				continue;
+			}
+		}
+	}
 	
 	
 	//================================= Option 1 Register student acc (menuAdmin()) //same as student =================================
