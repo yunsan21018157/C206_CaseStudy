@@ -8,6 +8,7 @@ public class TuitionManagement {
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 		ArrayList<managerTimetable> tuitionTimetableList = new ArrayList<managerTimetable>();
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>();
+		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		ArrayList<Student> studentDetailsList = new ArrayList<Student>();
 
 		//dummy records
@@ -20,6 +21,9 @@ public class TuitionManagement {
 		registrationList.add(new Registration(1, 1, "student1@gmail.com", "01/03/2022"));
 		registrationList.add(new Registration(2, 2, "student2@gmail.com", "01/03/2022"));
 		
+		teacherList.add(new Teacher("Jack", "Male", "jack@email.com","Diploma","Math"));
+		teacherList.add(new Teacher("Erf", "Male", "erf@email.com","Diploma","Math"));
+
 		//code
 		role();
 		int role = Helper.readInt("Enter role index: ");
@@ -76,11 +80,22 @@ public class TuitionManagement {
 						managerChoice = Helper.readInt("Enter your choice: ");
 						System.out.println("------------------------------");
 					} else if (managerChoice == 4) {
+						addTeacher(teacherList);
 						
+						menuManager();
+						managerChoice = Helper.readInt("Enter your choice: ");
+
 					} else if (managerChoice == 5) {
+						retrieveAllTeacher(teacherList);
 						
+						menuManager();
+						managerChoice = Helper.readInt("Enter your choice: ");
+
 					} else if (managerChoice == 6) {
-						
+						deleteTeacher(teacherList);
+						menuManager();
+						managerChoice = Helper.readInt("Enter your choice: ");
+
 					} else {
 						managerChoice = Helper.readInt("Invalid choice, Enter your choice again: ");
 					}
@@ -326,35 +341,32 @@ public class TuitionManagement {
 	}
 	
 	//================================= Option 4 Add teacher (menuManager()) JAYDEN =================================
-	public static Teacher addTeacher() {
+	public static void addTeacher(ArrayList<Teacher> teacherList) {
 		String name = Helper.readString("Enter name > ");
 		String gender = Helper.readString("Enter gender > ");
 		String email = Helper.readString("Enter email > ");
 		String qualification = Helper.readString("Enter teacher qualification > ");
 		String subjectGroup = Helper.readString("Enter teacher subject group >");
 	
-		Teacher teacher = new Teacher(name, gender, email, qualification, subjectGroup);
-		return teacher;
+		teacherList.add(new Teacher(name, gender, email, qualification, subjectGroup));
 	}
 	
 	public static void addTeacher(ArrayList<Teacher> teacherList, Teacher teacher) {
 		teacherList.add(teacher);
+		
+		System.out.println("Teacher has been added.");
 	}
 
 	//================================= Option 5 View teacher (menuManager()) JAYDEN  =================================
-	public static String retrieveAllTeacher(ArrayList<Teacher> teacherList) {
-		String output = "";
-
+	public static void retrieveAllTeacher(ArrayList<Teacher> teacherList) {
 		for (int i = 0; i < teacherList.size(); i++) {
-
-			output += String.format("%-84s\n", teacherList.get(i).toString());
+			System.out.println("Teacher name: " + teacherList.get(i).getName());
+			System.out.println("Teacher gender: " + teacherList.get(i).getGender());
+			System.out.println("Teacher email: " + teacherList.get(i).getEmail());
+			System.out.println("Teacher qualification: " + teacherList.get(i).getQualification());
+			System.out.println("Teacher subject group: " + teacherList.get(i).getSubjectGrp());
+			System.out.println("--------------------------------------------------");
 		}
-		return output;
-	}
-	public static void viewAllTeachers(ArrayList<Teacher> teacherList) {
-		String teacherInfo = String.format("%-10s %-10s %-10s %-10s %-10s","name","gender","email","qualification","subjectGroup");
-		 String output = retrieveAllTeacher(teacherList);	
-		System.out.println(output);
 	}
 		
 	//================================= Option 6 Delete teacher (menuManager()) JAYDEN =================================
@@ -364,7 +376,7 @@ public class TuitionManagement {
 		
 		for (int i = 0; i < teacherList.size(); i++) {
 			String delName = teacherList.get(i).getName();
-			if (delTeacher == delName) {
+			if (delTeacher.equals(delName)) {
 				teacherList.remove(i);
 				System.out.println("Teacher removed.");
 				System.out.println("------------------------------");
