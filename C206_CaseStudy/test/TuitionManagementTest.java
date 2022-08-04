@@ -63,7 +63,7 @@ public class TuitionManagementTest {
 		
 	
 	}
-	
+	//ahmad
 	@Test
 	public void testAddStudentDetails() { //test1
 		// Item list is not null, so that can add a new item - boundary
@@ -104,7 +104,7 @@ public class TuitionManagementTest {
 		assertEquals("Test that ViewAllStudentDetailsList", testOutput, allStudentDetails);
 		
 	}
-	
+	//yixun
 	@Test
 	public void testAddRegistration() {
 		// Item list is not null, so that can add a new item - boundary
@@ -157,10 +157,11 @@ public class TuitionManagementTest {
 		    personService.deleteFromPerson(null);
 	}
 
+	//joseph
 	
 	
 	
-	
+	//yunsan
 	@Test
 	public void testAddTuitionInformation() {
 		// Tuition list is not null, so that can add a new item - boundary
@@ -206,7 +207,7 @@ public class TuitionManagementTest {
 		// Test if tuition list is not null but empty -boundary
 		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
 		
-		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		//Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
 		TuitionManagement.addTuitionInformation(tuitionList, t1);
 		TuitionManagement.addTuitionInformation(tuitionList, t2);
 		
@@ -217,6 +218,7 @@ public class TuitionManagementTest {
 		
 	}
 
+	//jayden
 
 	@After
 	public void tearDown() throws Exception {
