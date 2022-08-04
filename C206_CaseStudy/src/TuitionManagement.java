@@ -122,7 +122,7 @@ public class TuitionManagement {
 		Helper.line(80, "-");
 	}
 
-	
+
 	//================================= Option 1 Add student (menuStudent()) AHMAD ====================================
 	public static Student inputStudentDetails() {
 		String sName = Helper.readString("Enter Student Name > ");
@@ -330,9 +330,11 @@ public class TuitionManagement {
 		String duration = Helper.readString("Enter tuition duration > ");
 		String preRequisite = Helper.readString("Enter pre-requisite (Basic/ Advanced) > ");
 		
+		
+		
 		Tuition tuition = new Tuition(code, title, name, desc, duration, preRequisite);
 		
-		//for (int i = 0; i < tuitionList.size(); i++) {
+		
 			
 		return tuition;
 	}
