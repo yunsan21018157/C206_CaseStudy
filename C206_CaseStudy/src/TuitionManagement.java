@@ -62,12 +62,13 @@ public class TuitionManagement {
 	
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
+	
 	public static TuitionTimeTable registerTuiton() {
+		
 		String regId = Helper.readString("Enter registration ID > ");
 		String ttId = Helper.readString("Enter tuition timetable ID > ");
 		String email = Helper.readString("Enter student email > ");
 		String date = Helper.readString("Enter date > ");
-		
 		
 		TuitionTimeTable tuitionTT = new Tuition(regId, ttId, email, date);
 		return tuitionTT;
@@ -87,7 +88,14 @@ public class TuitionManagement {
 	
 	
 	//================================= Option 1 Add tuition timetable (menuManager()) JOSEPH =================================
-	
+	public static ArrayList<managerTimetable> addTimetable() {
+		setTtId(Helper.readInt"");
+		private double price;
+		private String start_date;
+		private String end_date;
+		private String mode;
+	}
+		
 	
 	//================================= Option 2 View tuition timetable (menuManager()) JOSEPH =================================
 	
