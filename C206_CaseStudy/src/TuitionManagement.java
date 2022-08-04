@@ -5,6 +5,7 @@ public class TuitionManagement {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 		ArrayList<TuitionTimetable> tuitionTimetableList = new ArrayList<TuitionTimetable>();
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>();
 
@@ -14,6 +15,9 @@ public class TuitionManagement {
 		
 		tuitionTimetableList.add(new TuitionTimetable(1, 180.0, "01/01/2022", "01/03/2022", "Online"));
 		tuitionTimetableList.add(new TuitionTimetable(2, 180.0, "01/04/2022", "01/07/2022", "F2F"));
+		
+		registrationList.add(new Registration(1, 1, "student1@gmail.com", "01/03/2022"));
+		registrationList.add(new Registration(2, 2, "student2@gmail.com", "01/03/2022"));
 		
 		//code
 		role();
@@ -30,7 +34,25 @@ public class TuitionManagement {
 				studentChoice = Helper.readInt("Enter your choice: ");
 				System.out.println("------------------------------");
 				while (studentChoice != 6) {
-					
+					if () { 
+						
+					}
+					else if studentChoice == 4) {
+						registerTuiton(registrationList);
+						menuStudent();
+						studentChoice = Helper.readInt("Enter your choice: ");
+						System.out.println("------------------------------");
+					} else if (studentChoice == 5) {
+						viewRegisterTuiton(registrationList);
+						menuStudent();
+						studentChoice = Helper.readInt("Enter your choice: ");
+						System.out.println("------------------------------");
+					}	else if (studentChoice == 6) {
+						deleteRegisterTuiton(registrationList);
+						menuStudent();
+						studentChoice = Helper.readInt("Enter your choice: ");
+						System.out.println("------------------------------");
+					}
 				}
 			} else if (role == 2) {
 				menuManager();
