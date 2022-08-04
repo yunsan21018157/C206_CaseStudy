@@ -124,13 +124,54 @@ public class TuitionManagement {
 
 	
 	//================================= Option 1 Add student (menuStudent()) AHMAD ====================================
+	public static Student inputStudentDetails() {
+		String sName = Helper.readString("Enter Student Name > ");
+		char sGender = Helper.readChar("Enter Gender (M/F) > ");
+		String sEmail = Helper.readString("Enter Email > ");
+		String sDOB = Helper.readString("Enter date of birth > ");
+		String sCountry = Helper.readString("Enter which country you live in > ");
+		String sInterest = Helper.readString("Enter the subject you are interested in > ");
 	
+		Student student = new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest);
+		return student;
+		
+	}
+	public static void addStudentDetails(ArrayList<Student> studentDetailsList, Student student) {
+		studentDetailsList.add(student);
+	}
 	
 	//================================= Option 2 View student (menuStudent()) AHMAD ====================================
+	public static String retrieveAllStudent(ArrayList<Student> studentDetailsList) {
+		String output = "";
+		
+		for (int i = 0; i < studentDetailsList.size(); i++) {
+			output += String.format("$-84s\n", studentDetailsList.get(i).toString());
+		}
+		return output;
+	}
 	
-	
+	public static void viewAllStudentDetails(ArrayList<Student> studentDetailsList) {
+		TuitionManagement.setHeader("STUDENT DETAILS LIST");
+		String output = String.format("%-30s %-10S %-10s %-30s %-10s %-10s", "STUDENT NAME", "GENDER", "EMAIL", "DATE OF BIRTH", "COUNTRY", "SUBJECT");
+		output += retrieveAllStudent(studentDetailsList);
+		System.out.println(output);
+	}
 	//================================= Option 3 Delete student (menuAdmin()) AHMAD ==================================
-	
+	public static void deleteStudentDetails(ArrayList<Student> studentDetailsList) {
+		
+		String delStudent = Helper.readString("Enter the student name you want to delete: ");
+		
+		for (int i = 0; i < studentDetailsList.size(); i++) {
+			String delName = studentDetailsList.get(i).getName();
+			if (delStudent == delName) {
+				studentDetailsList.remove(i);
+				System.out.println("Student removed.");
+				System.out.println("------------------------------");
+			} else {
+				continue;
+			}
+		}
+	}
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
 	
