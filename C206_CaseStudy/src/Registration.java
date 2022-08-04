@@ -6,11 +6,11 @@ public class Registration {
 	private String status; 
 	private String date;
 	
-	public TuitionTimeTable(int regId ,int ttId,String sEmail, String status,String date ) {
+	public Registration(int regId ,int ttId,String sEmail,String date ) {
 		this.regId = regId;
 		this.ttId = ttId;
 		this.sEmail = sEmail;
-		this.status = status;
+		this.status = "";
 		this.date = date;
 		
 	}
