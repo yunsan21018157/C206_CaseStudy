@@ -21,6 +21,9 @@ public class TuitionManagement {
 		registrationList.add(new Registration(1, 1, "student1@gmail.com", "01/03/2022"));
 		registrationList.add(new Registration(2, 2, "student2@gmail.com", "01/03/2022"));
 		
+		studentDetailsList.add(new Student("John Doe", 'M', "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics"));
+		studentDetailsList.add(new Student("Jane Dane", 'F', "student2@gmail.com", "01/10/2000", "Singapore", "Humanities"));	
+		
 		teacherList.add(new Teacher("Jack", "Male", "jack@email.com","Diploma","Math"));
 		teacherList.add(new Teacher("Erf", "Male", "erf@email.com","Diploma","Math"));
 
