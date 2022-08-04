@@ -5,7 +5,7 @@ public class Student extends Users{
 	private String sCountry;
 	private String sInterest;
 	
-	public Student(String name, String gender, String sEmail, String sDOB, String sCountry, String sInterest) {
+	public Student(String name, char gender, String sEmail, String sDOB, String sCountry, String sInterest) {
 		super(name, gender);
 		this.sEmail = sEmail;
 		this.sDOB = sDOB;

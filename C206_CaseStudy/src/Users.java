@@ -1,10 +1,10 @@
 
 public class Users {
 	private String name;
-	private String gender;
+	private char gender;
 	
 
-	public Users(String name, String gender) {
+	public Users(String name, char gender) {
 		this.name = name;
 		this.gender = gender;
 	}
@@ -14,5 +14,21 @@ public class Users {
 	return userInfo;
 	}
 	
-	public 
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public char getGender() {
+		return gender;	
+	}
+	
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	
+	
 }
