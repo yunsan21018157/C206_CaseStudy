@@ -65,7 +65,7 @@ public class TuitionManagementTest {
 	}
 	
 	@Test
-	public void testAddStudentDetails() {
+	public void testAddStudentDetails() { //test1
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid student details arraylist to add to", studentDetailsList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
