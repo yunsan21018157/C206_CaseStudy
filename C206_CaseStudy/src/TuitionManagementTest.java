@@ -33,7 +33,7 @@ public class TuitionManagementTest {
 	private ArrayList<TuitionTimetable> tuitionTimetableList;
 	
 //	public TuitionManagementTest() {
-//		super();
+///		super();
 		
 	@Before
 	public void setUp() throws Exception {

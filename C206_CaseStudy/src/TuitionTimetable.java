@@ -13,6 +13,7 @@
  * @author 21018157
  *
  */
+//
 public class TuitionTimetable {
 		
 		private int ttId;
