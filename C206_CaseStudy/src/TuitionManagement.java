@@ -36,17 +36,17 @@ public class TuitionManagement {
 				while (studentChoice != 6) {
 					if (studentChoice == 1) { 
 						
-					} else if (studentChoice == 4) {
+					} else if (studentChoice == 3) {
 						registerTuiton(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						System.out.println("------------------------------");
-					} else if (studentChoice == 5) {
+					} else if (studentChoice == 4) {
 						viewRegisterTuiton(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						System.out.println("------------------------------");
-					}	else if (studentChoice == 6) {
+					}	else if (studentChoice == 5) {
 						deleteRegisterTuiton(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
