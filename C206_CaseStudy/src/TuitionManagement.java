@@ -52,6 +52,13 @@ public class TuitionManagement {
 		System.out.println("------------------------------");
 	}
 	
+	public static void setHeader(String header) {
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
+	}
+
+	
 	//================================= Option 1 Add student (menuStudent()) AHMAD ====================================
 	
 	
@@ -133,10 +140,28 @@ public class TuitionManagement {
 		tuitionList.add(tuition);
 			
 	}
-}
+
 	//================================= Option 3 View tuition info (menuAdmin()) YUNSAN =================================
-		
+	public static String retrieveTuition(ArrayList<Tuition> tuitionList) {
+		String output = "";
+	
+		for (int i = 0; i < tuitionList.size(); i++) {
+	
+			output += String.format("%-84s\n", tuitionList.get(i).toString());
+		}
+		return output;
+	}
+	
+	public static void viewTuition(ArrayList<Tuition> tuitionList) {
+		TuitionManagement.setHeader("TUITION LIST");
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CODE", "TITLE",
+				"NAME", "DESCRIPTION","DURATION", "PRE-REQUISITE");
+		 output += retrieveTuition(tuitionList);	
+		System.out.println(output);
+	}
+
 	//================================= Option 4 Delete tuition info (menuAdmin()) YUNSAN =================================
 		
 		
 	//================================= Option 5 QUIT  =================================
+}
