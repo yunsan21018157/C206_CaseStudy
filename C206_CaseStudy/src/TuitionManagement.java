@@ -175,26 +175,52 @@ public class TuitionManagement {
 	
 	//================================= Option 4 Register tuition (menuStudent()) YIXUN ==================================
 	
-	public static TuitionTimetable registerTuiton() {
+	public static void registerTuiton(ArrayList<Registration> registrationList) {
 		
-		String regId = Helper.readString("Enter registration ID > ");
-		String ttId = Helper.readString("Enter tuition timetable ID > ");
-		String email = Helper.readString("Enter student email > ");
+		int regId = Helper.readInt("Enter registration ID > ");
+		int ttId = Helper.readInt("Enter tuition timetable ID > ");
+		String sEmail = Helper.readString("Enter student email > ");
 		String date = Helper.readString("Enter date > ");
 		
-		TuitionTimetable tuitionTT = new Tuition(regId, ttId, email, date);
-		return tuitionTT;
+		registrationList.add(new Registration(regId, ttId, sEmail, date));
+		
+		System.out.println("You have registered for this timetable.");
+		System.out.println("------------------------------");
+		
 	}
 	
-	public static void addTuitionTimeTable(ArrayList<TuitionTimetable> tuitionList, Tuition tuition) {
-			
-		tuitionList.add(tuition);
-	}
 	
 	//================================= Option 5 View tuition registration (menuStudent()) YIXUN ==================================
 	
+	public static void viewRegisterTuiton(ArrayList<Registration> registrationList){
+		
+		for (int i = 0; i < registrationList.size(); i++) {
+			System.out.println("Registration ID: " + registrationList.get(i).getRegId());
+			System.out.println("Tuition Timetable ID: " + registrationList.get(i).getTTId());
+			System.out.println("Student Email: " + registrationList.get(i).getSEmail());
+			System.out.println("Registration Status: " + registrationList.get(i).getStatus());
+			System.out.println("Registration Date: " + registrationList.get(i).getDate());
+			System.out.println("--------------------------------------------------");
+		}
+	}
 	
 	//================================= Option 6 Delete tuition registration (menuStudent()) YIXUN ==================================
+	
+	public static void deleteRegisterTuiton(ArrayList<Registration> registrationList){
+		
+		int del_ttID = Helper.readInt("Enter the tuition timetable ID you want to delete: ");
+		
+		for (int i = 0; i < registrationList.size(); i++) {
+			int ttID = registrationList.get(i).getRegId();
+			if (ttID == del_ttID) {
+				registrationList.remove(i);
+				System.out.println("Registration removed.");
+				System.out.println("------------------------------");
+			} else {
+				continue;
+			}
+		}
+	}
 	
 	
     //================================= Option 1 Add tuition timetable (menuManager()) JOSEPH =================================
