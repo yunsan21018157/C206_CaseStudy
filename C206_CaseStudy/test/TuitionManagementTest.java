@@ -158,7 +158,39 @@ public class TuitionManagementTest {
 	}
 
 	//joseph
-	
+	@Test
+	 public void testAddTuitionTimetable() {
+	  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
+	  
+	  TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+	  assertEquals("Check that tuition timetable arrayList size is 2", 2, tuitionTimetableList.size());
+	  assertSame("Check that a tuition timetable has been aded.", tt1, tuitionTimetableList.get(0));
+	  
+	  TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+	  assertEquals("Check that Registration arraylist size is 2", 2, registrationList.size());
+	  assertSame("Check that Registration is added", r2, registrationList.get(1));
+	 }
+	 
+	 @Test
+	 public void testViewTuitionTimetable() {
+	  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
+	  
+	  allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
+	  String testOutput = String.format("%-10d %-10s %-10s %-10s %-10s\n", 1, 10.00, "20/2/2022", "31/5/2022", "Online");
+	  testOutput += String.format("%-10d %-10s %-10s %-10s %-10s\n", 1, 10.00, "20/2/2022", "31/5/2022", "Online");
+	  
+	  assertEquals("Check that output and allTuitionTimetable displays the same items.", testOutput, allTuitionTimetable);
+	 }
+	 
+	 @Test public void testDeleteTuitionTimetable() {
+	  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
+	  
+	  allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
+	  deleteOneTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList - 1);
+	  
+	  assertEquals("Check that allTuitionTimetable and deleteOneTuitionTimetable displays the same number of items.", allTuitionTimetable, deleteOneTuitionTimetable);
+	 }
+
 	
 	
 	//yunsan
@@ -219,6 +251,49 @@ public class TuitionManagementTest {
 	}
 
 	//jayden
+	@Test
+	 public void testAddTeacher() {
+	  assertNotNull("Test if there is valid Teacher arraylist to add to", teacherList);
+	  
+	  //Given an empty list, after adding 1 item, the size of the list is 1
+	  TuitionManagement.addTeacher(teacherList, t1);  
+	  assertEquals("Test if that Teacher arrayList size is 1?", 1, teacherList.size());
+	  
+	  //The item just added is as same as the first item of the list
+	  assertSame("Test that Teacher is added same as 1st item of the list?", t1, teacherList.get(0));
+	  
+	  //Add another item. test The size of the list is 2?
+	  TuitionManagement.addTeacher(teacherList, t2);
+	  TuitionManagement.addTeacher(teacherList, t3);
+	  assertEquals("Test that Teacher arraylist size is 3?", 3, teacherList.size());
+	  assertSame("Test that teacher is added same as 3rd item of the list?", t3, teacherList.get(2));
+	 }
+
+	 @Test
+	 public void testRetrieveAllTeachers() {
+	  // Test if Item list is not null but empty, so that can add a new item
+	  assertNotNull("Test if there is valid Teacher arraylist to add to", teacherList);
+	  
+	  //test if the list of teachers retrieved from the TuitionManager is empty
+	  String allTeachers = TuitionManagement.retrieveAllTeacher(teacherList);
+	  String testOutput = "";
+	  assertEquals("Check that ViewAllTeacherlist", testOutput, allTeachers);
+	    
+	  //Given an empty list, after adding 2 items, test if the size of the list is 2
+	  TuitionManagement.addTeacher(teacherList, t1);
+	  TuitionManagement.addTeacher(teacherList, t2);
+	  assertEquals("Test if that Teacher arraylist size is 2?", 2, teacherList.size());
+	  
+	  //test if the expected output string same as the list of camcorders retrieved from the SourceCentre
+	  allTeachers = TuitionManagement.retrieveAllTeacher(teacherList);
+
+	  testOutput = String.format("%-10s %-10s %-10s %-10s %-10s\n","Jack", "Male", "jack@email.com","Diploma","Math");
+	  testOutput += String.format("%-10s %-10s %-10s %-10s %-10s\n","Erf", "Male", "erf@email.com","Diploma","Math");
+	 
+	  assertEquals("Check that ViewAllTeacherlist", testOutput, allTeacher;)
+	  
+	 }
+
 
 	@After
 	public void tearDown() throws Exception {
