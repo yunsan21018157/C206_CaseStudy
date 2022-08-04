@@ -202,11 +202,37 @@ public class TuitionManagement {
 	}
 	
 	//================================= Option 4 Add teacher (menuManager()) JAYDEN =================================
+	public static Teacher addTeacher() {
+		String name = Helper.readString("Enter name > ");
+		String gender = Helper.readString("Enter gender > ");
+		String email = Helper.readString("Enter email > ");
+		String qualification = Helper.readString("Enter teacher qualification > ");
+		String subjectGroup = Helper.readString("Enter teacher subject group >");
 	
+		Teacher teacher = new Teacher(name, gender, email, qualification, subjectGroup);
+		return teacher;
+	}
 	
+	public static void addTeacher(ArrayList<Teacher> teacherList, Teacher teacher) {
+		teacherList.add(teacher);
+	}
+
 	//================================= Option 5 View teacher (menuManager()) JAYDEN  =================================
-	
-	
+	public static String retrieveAllTeacher(ArrayList<Teacher> teacherList) {
+		String output = "";
+
+		for (int i = 0; i < teacherList.size(); i++) {
+
+			output += String.format("%-84s\n", teacherList.get(i).toString());
+		}
+		return output;
+	}
+	public static void viewAllTeachers(ArrayList<Teacher> teacherList) {
+		String teacherInfo = String.format("%-10s %-10s %-10s %-10s %-10s","name","gender","email","qualification","subjectGroup");
+		 String output = retrieveAllTeacher(teacherList);	
+		System.out.println(output);
+	}
+		
 	//================================= Option 6 Delete teacher (menuManager()) JAYDEN =================================
 	
 	
