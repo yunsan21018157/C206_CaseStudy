@@ -78,29 +78,22 @@ public class TuitionManagementTest {
 	public void testViewRegisterTuiton() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Registration arraylist to retrieve item", registrationList);
-		
-		//test if the list of camcorders retrieved from the SourceCentre is empty - boundary
-		String allCamcorder= TuitionManagement.retrieveAllCamcorder(registrationList);
+		String allRegistration = TuitionManagement.viewRegisterTuiton(registrationList);
 		String testOutput = "";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
 		
-		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		TuitionManagement.addCamcorder(registrationList, cc1);
-		TuitionManagement.addCamcorder(registrationList, cc2);
-		assertEquals("Test that Camcorder arraylist size is 2", 2, camcorderList.size());
-		
-		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
-		allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0011", "Nikon HDSLR", "Yes", "", "40");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0012", "Sony DSC-RX100M7", "Yes", "", "20" );
+		//test if the expected output string same as the list of registrations retrieved from the SourceCentre	
+		allRegistration= TuitionManagement.viewRegisterTuiton(registrationList);
+		testOutput = String.format("%-10d %-30s %-10s %-10s %-20s\n",1, 1, "student1@gmail.com", "01/03/2022");
+		testOutput += String.format("%-10d %-30s %-10s %-10s %-20s\n",2, 2, "student2@gmail.com", "01/03/2022");
 	
-		assertEquals("Test that ViewAllCamcorderlist", testOutput, allCamcorder);
+	
+		assertEquals("Test that testViewRegisterTuiton", testOutput, allRegistration);
 		
 	}
 	
 	@Test
 	public void testDoDeleteRegistration() {
-		    Assert.assertNotNull(registrationList.getRegistration(r1));
+		    Assert.assertNotNull(registrationList.getRegistration	(Registration));
 		    //add a rigorous compare method to make sure contents are the same, i.e. nothing is lost or transmuted incorrectly, ignoring ID if that is autogen
 		    //alternatively, you can create a unit test just for Person
 		    Assert.assertEquals(person, r1); 
