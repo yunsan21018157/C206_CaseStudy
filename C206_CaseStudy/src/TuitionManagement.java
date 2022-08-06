@@ -230,7 +230,6 @@ public class TuitionManagement {
 		Helper.line(30, "-");
 	}
 
-
 	// ============================== Option 1 Add student for menuStudent() AHMAD ==============================
 	
 	public static void addStudentDetails(ArrayList<Student> studentDetailsList) {
