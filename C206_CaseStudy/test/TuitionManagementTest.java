@@ -266,7 +266,7 @@ public class TuitionManagementTest {
 		TuitionManagement.addTuitionInformation(tuitionList, t1);
 		TuitionManagement.addTuitionInformation(tuitionList, t2);
 		
-		TuitionManagement.deleteTuition(tuitionList, "E01B");
+		TuitionManagement.deleteTuition(tuitionList, "E01B"); 
 		TuitionManagement.deleteTuition(tuitionList, "E02A");
 		
 		assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());

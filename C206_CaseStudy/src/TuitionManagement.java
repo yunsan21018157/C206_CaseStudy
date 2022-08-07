@@ -435,9 +435,7 @@ public class TuitionManagement {
 	
 	// ============================== Option 6 Add tuition info for menuAdmin() YUNSAN ==============================
 	
-	public static void addTuitionInformation(ArrayList<Tuition> tuitionList) {
-		
-		TuitionManagement.retrieveTuition(tuitionList); //print list
+	public static Tuition addTuitionInformation() {
 		
 		String code = Helper.readString("Enter tuition code > ");
 		String title = Helper.readString("Enter tuition title > ");
@@ -447,7 +445,11 @@ public class TuitionManagement {
 		String preRequisite = Helper.readString("Enter pre-requisite (Basic/ Advanced) > ");
 		
 		Tuition tuition = new Tuition(code, title, name, desc, duration, preRequisite);
-		
+		return tuition;
+	}
+	
+	public static void addTuitionInformation(ArrayList<Tuition> tuitionList, Tuition tuition) {
+		TuitionManagement.retrieveTuition(tuitionList); //print list
 		tuitionList.add(tuition);
 	}
 	
@@ -479,23 +481,32 @@ public class TuitionManagement {
 
 	// ============================== Option 8 Delete tuition info for menuAdmin() YUNSAN ==============================
 	
-	public static void deleteTuition(ArrayList<Tuition> tuitionList) {
-			
-			TuitionManagement.retrieveTuition(tuitionList); //print list
+	public static String deleteTuition(ArrayList<Tuition> tuitionList, String tuition) {
 		
-			String delCode = Helper.readString("Enter tuition code to delete > ");
+		TuitionManagement.retrieveTuition(tuitionList); //print list
+		
+		String delCode = Helper.readString("Enter tuition code to delete > ");
+		
+		String code = "";
+		
+		for (int i = 0; i < tuitionList.size(); i++) {
+			 code = tuitionList.get(i).getCode();
+			if (code == delCode) {
+				tuitionList.remove(i);
+				System.out.println("Tuition " + delCode + " deleted");
 			
-			String code = "";
-			
-			for (int i = 0; i < tuitionList.size(); i++) {
-				 code = tuitionList.get(i).getCode();
-				if (code == delCode) {
-					tuitionList.remove(i);
-					System.out.println("Tuition " + delCode + " deleted");
-				
-				} else {
-					System.out.println("Invalid tuition code");
-				}
+			} else {
+				System.out.println("Invalid tuition code");
+			}
+		
+		}
+		return code;	
+	}
+		
+	public static void deleteTuition(ArrayList<Tuition> tuitionList, Tuition tuition) {
+		
+			tuitionList.remove(tuition);
+		
 			}
 		}
-}
+
