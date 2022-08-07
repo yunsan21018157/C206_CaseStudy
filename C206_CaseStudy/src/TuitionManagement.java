@@ -182,6 +182,9 @@ public class TuitionManagement {
 	}
 	
 	public static void role() {
+		System.out.println("------------------------------");
+		System.out.println("Tuition Management System");
+		System.out.println("------------------------------");
 		System.out.println("1 - Student");
 		System.out.println("2 - Manager");
 		System.out.println("3 - Admin");
