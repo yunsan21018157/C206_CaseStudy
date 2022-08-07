@@ -181,40 +181,49 @@ public class TuitionManagementTest {
 	}
 
 	//joseph
-	@Test
-	 public void testAddTuitionTimetable() {
-	  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
-	  
-	  TuitionManagement.addTuitionTimetable(tuitionTimetableList);
-	  assertEquals("Check that tuition timetable arrayList size is 2", 2, tuitionTimetableList.size());
-	  assertSame("Check that a tuition timetable has been aded.", mt1, tuitionTimetableList.get(0));
-	  
-	  TuitionManagement.addTuitionTimetable(tuitionTimetableList);
-	  assertEquals("Check that Registration arraylist size is 2", 2, registrationList.size());
-	  assertSame("Check that Registration is added", r2, registrationList.get(1));
-	 }
-	 
-	 @Test
-	 public void testViewTuitionTimetable() {
-	  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
-	  
-	  allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
-	  String testOutput = String.format("%-10d %-10s %-10s %-10s %-10s\n", 1, 10.00, "20/2/2022", "31/5/2022", "Online");
-	  testOutput += String.format("%-10d %-10s %-10s %-10s %-10s\n", 1, 10.00, "20/2/2022", "31/5/2022", "Online");
-	  
-	  assertEquals("Check that output and allTuitionTimetable displays the same items.", testOutput, allTuitionTimetable);
-	 }
-	 
-	 @Test public void testDeleteTuitionTimetable() {
-	  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
-	  
-	  allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
-	  deleteOneTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList - 1);
-	  
-	  assertEquals("Check that allTuitionTimetable and deleteOneTuitionTimetable displays the same number of items.", allTuitionTimetable, deleteOneTuitionTimetable);
-	 }
-
-	
+		@Test
+		 public void testAddTuitionTimetable() {
+		  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
+		  
+		  TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+		  assertEquals("Check that tuition timetable arrayList size is 2", 2, tuitionTimetableList.size());
+		  assertSame("Check that a tuition timetable has been aded.", mt1, tuitionTimetableList.get(0));
+		  
+		  TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+		  assertEquals("Check that Registration arraylist size is 2", 2, registrationList.size());
+		  assertSame("Check that Registration is added", r2, registrationList.get(1));
+		 }
+		 
+		 @Test
+		 public void testViewTuitionTimetable() {
+		  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
+		  arrayList<managerTimetable> allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
+		  String testOutput = String.format("%-10d %-10s %-10s %-10s %-10s\n", 1, 10.00, "20/2/2022", "31/5/2022", "Online");
+		  
+		  for (int i = 0; i < tuitionTimetableList.size(); i++ ) {
+			  int ttId = tuitionTimetableList.get(i).getTtId();
+			  double price = tuitionTimetableList.get(i).getPrice();
+			  String start_date = tuitionTimetableList.get(i).getStart_date();
+			  String end_date = tuitionTimetableList.get(i).getEnd_date();
+			  String mode = tuitionTimetableList.get(i).getMode();
+			  testOutput += ("", ttId, price, start_date, end_date, mode);
+		  }
+		  
+		  assertEquals("Check allTuitionTimetable", testOutput, allTuitionTimetable);
+		 }
+		 
+		 @Test
+		public void testDeleteTuitionTimetable() {
+			assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+				
+			TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+			TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+				
+			TuitionManagement.deleteTuitionTimetable(tuitionTimetableList);
+			TuitionManagement.deleteTuitionTimetable(tuitionTimetableList);
+				
+			assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());
+		 }
 	
 	//yunsan
 	@Test
