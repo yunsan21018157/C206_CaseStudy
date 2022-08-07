@@ -432,6 +432,9 @@ public class TuitionManagement {
 	// ============================== Option 6 Add tuition info for menuAdmin() YUNSAN ==============================
 	
 	public static void addTuitionInformation(ArrayList<Tuition> tuitionList) {
+		
+		TuitionManagement.retrieveTuition(tuitionList); //print list
+		
 		String code = Helper.readString("Enter tuition code > ");
 		String title = Helper.readString("Enter tuition title > ");
 		String name = Helper.readString("Enter subject group name > ");
@@ -474,6 +477,8 @@ public class TuitionManagement {
 	
 	public static void deleteTuition(ArrayList<Tuition> tuitionList) {
 			
+			TuitionManagement.retrieveTuition(tuitionList); //print list
+		
 			String delCode = Helper.readString("Enter tuition code to delete > ");
 			
 			String code = "";
