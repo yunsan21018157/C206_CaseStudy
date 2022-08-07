@@ -111,6 +111,24 @@ public class TuitionManagementTest {
 		assertEquals("Test that ViewAllStudentDetailsList", testOutput, allStudentDetails);
 		
 	}
+
+	@Test
+	public void testDeleteStudentDetails() {
+		// Test if tuition list is not null but empty -boundary
+		assertNotNull("Test if there is valid Student Details arraylist to retrieve item", studentDetailsList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
+		TuitionManagement.addStudentDetails(studentDetailsList, s1);
+		TuitionManagement.addStudentDetails(studentDetailsList, s2);
+		
+		TuitionManagement.deleteStudentDetails(studentDetailsList, "John");
+		TuitionManagement.deleteStudentDetails(studentDetailsList, "Jane");
+		
+		assertEquals("Check that Student Details arraylist size is 0", 0, studentDetailsList.size());
+		
+	}
+	
+	
 	//yixun
 	@Test
 	public void testAddRegistration() {
@@ -297,6 +315,22 @@ public class TuitionManagementTest {
 	 
 	  assertEquals("Check that ViewAllTeacherlist", testOutput, allTeacher);
 	  
+	 }
+	 
+	 @Test
+	 public void testDeleteTeacher() {
+	 // Test if teacher list is not null but empty -boundary
+	 assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+	   
+	 //Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
+	 TuitionManagement.addTeacher(teacherList, tc1);
+	 TuitionManagement.addTeacher(tuitionList, tc2);
+	 
+	 TuitionManagement.deleteTeacher(teacherList, "Jack");
+	 TuitionManagement.deleteTeacher(teacherList, "Erf");
+	   
+	 assertEquals("Check that Teacher arraylist size is 0", 0, teacherList.size());
+	   
 	 }
 
 

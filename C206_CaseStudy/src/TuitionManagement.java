@@ -236,7 +236,7 @@ public class TuitionManagement {
 
 	// ============================== Option 1 Add student for menuStudent() AHMAD ==============================
 	
-	public static void addStudentDetails(ArrayList<Student> studentDetailsList) {
+	public static Student addStudentDetails() {
 		String sName = Helper.readString("Enter Student Name > ");
 		char sGender = Helper.readChar("Enter Gender (M/F) > ");
 		String sEmail = Helper.readString("Enter Email > ");
@@ -245,9 +245,13 @@ public class TuitionManagement {
 		String sInterest = Helper.readString("Enter the subject you are interested in > ");
 	
 		Student student = new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest);
+		return student;
+	}
+	public static void addCamcorder(ArrayList<Student> studentDetailsList, Student student) {
 		
 		studentDetailsList.add(student);
 	}
+
 	
 	// ============================== Option 2 View student for menuStudent() AHMAD ==============================
 	
