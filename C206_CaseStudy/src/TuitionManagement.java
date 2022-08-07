@@ -181,6 +181,7 @@ public class TuitionManagement {
 		}
 	}
 	
+	// Added title
 	public static void role() {
 		System.out.println("------------------------------");
 		System.out.println("Tuition Management System");
