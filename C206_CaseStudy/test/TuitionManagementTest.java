@@ -147,21 +147,19 @@ public class TuitionManagementTest {
 	}
 	
 	@Test
-	public void testDoDeleteRegistration() {
-		    Assert.assertNotNull(registrationList.getRegistration	(Registration));
-		    //add a rigorous compare method to make sure contents are the same, i.e. nothing is lost or transmuted incorrectly, ignoring ID if that is autogen
-		    //alternatively, you can create a unit test just for Person
-		    Assert.assertEquals(person, r1); 
-
-		    //remove the Person
-		    personService.deleteFromPerson(person);
-		    Assert.assertNull(personService.getPerson(person));
-
-		    //test for exception handling when you try to remove a non-existent person;
-		    personService.deleteFromRegistration(person);
-
-		    //test for exception handling when you try to remove null
-		    personService.deleteFromPerson(null);
+	public void testdeleteRegisterTuition() {
+		// Test if tuition list is not null but empty -boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
+		TuitionManagement.registerTuition(1, 1, "student1@gmail.com", "01/03/2022");
+		TuitionManagement.registerTuition(2, 2, "student2@gmail.com", "02/03/2022");
+		
+		TuitionManagement.deleteRegisterTuition(tuitionList, 1);
+		TuitionManagement.deleteRegisterTuition(tuitionList, 2);
+		
+		assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());
+		
 	}
 
 	//joseph
