@@ -94,7 +94,7 @@ public class TuitionManagementTest {
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", studentDetailsList);
 		
 		//test if the list of Student Details retrieved from the SourceCentre is empty - boundary
-		String allStudentDetails= TuitionManagement.retrieveAllStudentDetails(studentDetailsList);
+		String allStudentDetails= TuitionManagement.retrieveAllStudent(studentDetailsList);
 		String testOutput = "";
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allStudentDetails);
 		
@@ -104,7 +104,7 @@ public class TuitionManagementTest {
 		assertEquals("Test that Student Details arraylist size is 2", 2, studentDetailsList.size());
 		
 		//test if the expected output string same as the list of Student Details retrieved from the SourceCentre	
-		allStudentDetails= TuitionManagement.retrieveAllStudentDetails(studentDetailsList);
+		allStudentDetails= TuitionManagement.retrieveAllStudent(studentDetailsList);
 		testOutput = String.format("%-30s %-10s %-30s %-20s %-20s %-20s\n","John Doe", 'M', "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics");
 		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s %-20s\n","Jane Dane", 'F', "student2@gmail.com", "01/10/2000", "Singapore", "Humanities");
 	

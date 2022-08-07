@@ -247,7 +247,7 @@ public class TuitionManagement {
 		Student student = new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest);
 		return student;
 	}
-	public static void addCamcorder(ArrayList<Student> studentDetailsList, Student student) {
+	public static void addStudentDetails(ArrayList<Student> studentDetailsList, Student student) {
 		
 		studentDetailsList.add(student);
 	}
