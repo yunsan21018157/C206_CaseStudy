@@ -17,16 +17,32 @@ public class Student extends Users{
 		return sEmail;
 	}
 	
+	public void setsEmail() {
+		this.sEmail = sEmail;
+	}
+	
 	public String getsDOB() {
 		return sDOB;
 	}
 	
-	public String sCountry() {
+	public void setsDOB() {
+		this.sDOB = sDOB;
+	}
+	
+	public String getsCountry() {
 		return sCountry;
 	}
+	
+	public void setsCountry() {
+		this.sCountry = sCountry;
+	}
 
-	public String sInterest() {
+	public String getsInterest() {
 		return sInterest;
+	}
+	
+	public void setsInterest() {
+		this.sInterest = sInterest;
 	}
 	
 	public String toString() {
