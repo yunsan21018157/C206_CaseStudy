@@ -47,7 +47,7 @@ public class TuitionManagement {
 				line();
 				while (studentChoice != 6) {
 					if (studentChoice == 1) {                                   // > addStudent Option <
-						addStudentDetails(studentDetailsList);
+						addStudentDetails(studentDetailsList, null);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
@@ -115,7 +115,7 @@ public class TuitionManagement {
 				line();
 				while (adminChoice != 9) {
 					if (adminChoice == 1) {                                     // > addStudent Option <
-						addStudentDetails(studentDetailsList);
+						addStudentDetails(studentDetailsList, null);
 						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
@@ -127,7 +127,7 @@ public class TuitionManagement {
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 3) {                              // > addTuitionInformation Option <
-						addTuitionInformation(tuitionList);
+						addTuitionInformation(tuitionList, null);
 						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
@@ -273,20 +273,32 @@ public class TuitionManagement {
 	
 	// ============================== Option 2 Delete student for menuAdmin() AHMAD ==============================
 	
-	public static void deleteStudentDetails(ArrayList<Student> studentDetailsList) {
-		String delStudent = Helper.readString("Enter the student name you want to delete: ");
+	public static String deleteStudentDetails(ArrayList<Student> studentDetailsList) {
+		TuitionManagement.retrieveAllStudent(studentDetailsList);
 		
+		String delStudent = Helper.readString("Enter the student name you want to delete: ");
+		String delName = "";
 		for (int i = 0; i < studentDetailsList.size(); i++) {
-			String delName = studentDetailsList.get(i).getName();
+			delName += studentDetailsList.get(i).getName();
 			if (delStudent == delName) {
 				studentDetailsList.remove(i);
 				System.out.println("Student removed.");
 				System.out.println("------------------------------");
 			} else {
-				continue;
+				System.out.println("Invalid tuition code");
 			}
 		}
+		return delStudent;
 	}
+	public static void deleteStudentDetails(ArrayList<Tuition> studentDetailsList, Student delName) {
+		
+		studentDetailsList.remove(delName);
+	
+	}
+	
+
+
+
 	
 	// ============================== Option 3 Register tuition for menuStudent() YIXUN ==============================
 	
@@ -481,7 +493,7 @@ public class TuitionManagement {
 
 	// ============================== Option 8 Delete tuition info for menuAdmin() YUNSAN ==============================
 	
-	public static String deleteTuition(ArrayList<Tuition> tuitionList, String tuition) {
+	public static String deleteTuition(ArrayList<Tuition> tuitionList) {
 		
 		TuitionManagement.retrieveTuition(tuitionList); //print list
 		
