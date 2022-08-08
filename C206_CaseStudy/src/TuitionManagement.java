@@ -2,6 +2,11 @@ import java.util.ArrayList;
 
 public class TuitionManagement {
 
+	/**
+	 * 
+	 */
+	//extract constants
+	private static final int OPTION_QUIT = 4;
 	public static void main(String[] args) {
 		
 		// ArrayList
@@ -38,7 +43,7 @@ public class TuitionManagement {
 		int adminChoice = 0;
 		
 		// Choices
-		while (role != 4) {
+		while (role != OPTION_QUIT) { 
 			
 			// Role = Student
 			if (role == 1) {
@@ -61,7 +66,7 @@ public class TuitionManagement {
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (studentChoice == 4) {                            // > addRegisteredTuition Option <
+					} else if (studentChoice == OPTION_QUIT) {                            // > addRegisteredTuition Option <
 						viewRegisterTuition(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
@@ -84,7 +89,7 @@ public class TuitionManagement {
 				menuManager();
 				managerChoice = Helper.readInt("Enter your choice: ");
 				line();
-				while (managerChoice != 4) {
+				while (managerChoice != OPTION_QUIT) {
 					if (managerChoice == 1) {                                   // > addTeacher Option <
 						addTeacher(teacherList);
 						menuManager();
@@ -129,7 +134,7 @@ public class TuitionManagement {
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 4) {                              // > viewTuition Option <
+					} else if (adminChoice == OPTION_QUIT) {                              // > viewTuition Option <
 						retrieveTuition(tuitionList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
@@ -170,7 +175,7 @@ public class TuitionManagement {
 		line();
 	}
 	
-	// Added title
+	//refactored: extract methods
 	public static void role() {
 		System.out.println("------------------------------");
 		System.out.println("Tuition Management System");
@@ -260,12 +265,18 @@ public class TuitionManagement {
 				"STUDENT EMAIL", "DATE-OF-BIRTH", "COUNTRY", "INTEREST"); 
 		
 		for (int i = 0; i < studentDetailsList.size(); i++) {
-			sName = studentDetailsList.get(i).getsName();
-			sGender = studentDetailsList.get(i).getsGender();
-			sEmail = studentDetailsList.get(i).getsEmail();
-			sDOB = studentDetailsList.get(i).getsDOB();
-			sCountry = studentDetailsList.get(i).getsCountry();
-			sInterest = studentDetailsList.get(i).getsInterest();
+			String getsName = studentDetailsList.get(i).getsName();
+			sName = getsName; //refactored: extract variables
+			String getsGender = studentDetailsList.get(i).getsGender();
+			sGender = getsGender; //refactored
+			String getsEmail = studentDetailsList.get(i).getsEmail();
+			sEmail = getsEmail; //refactored
+			String getsDOB = studentDetailsList.get(i).getsDOB();
+			sDOB = getsDOB; //refactored
+			String getsCountry = studentDetailsList.get(i).getsCountry();
+			sCountry = getsCountry; //refactored
+			String getsInterest = studentDetailsList.get(i).getsInterest();
+			sInterest = getsInterest; //refactored
 		
 			
 			output += String.format("%-15s %-10s %-25s %-15s %-20s\n", sName, sGender, sEmail, sDOB, sCountry, sInterest);
@@ -282,7 +293,8 @@ public class TuitionManagement {
 		String deletesName = Helper.readString("Enter the Student Name you want to delete: ");
 		
 		for (int i = 0; i < studentDetailsList.size(); i++) {
-			String sName = studentDetailsList.get(i).getsName();
+			String getsName = studentDetailsList.get(i).getsName(); //original
+			String sName = getsName; //refactored: extracted into a string called sName
 			if (sName.equalsIgnoreCase(deletesName)) {
 				studentDetailsList.remove(i);
 				System.out.println("------------------------------");
@@ -328,11 +340,16 @@ public class TuitionManagement {
 				"STUDENT EMAIL", "STATUS", "DATE"); 
 		
 		for (int i = 0; i < registrationList.size(); i++) {
-			regId = registrationList.get(i).getRegId();
-			ttId = registrationList.get(i).getTTId();
-			sEmail = registrationList.get(i).getSEmail();
-			status = registrationList.get(i).getStatus();
-			date = registrationList.get(i).getDate();
+			String regId2 = registrationList.get(i).getRegId();
+			regId = regId2;
+			String ttId2 = registrationList.get(i).getTTId();
+			ttId = ttId2;
+			String sEmail2 = registrationList.get(i).getSEmail();
+			sEmail = sEmail2;
+			String status2 = registrationList.get(i).getStatus();
+			status = status2;
+			String date2 = registrationList.get(i).getDate();
+			date = date2;
 		
 			
 			output += String.format("%-20s %-20s %-25s %-20s %-20s\n", regId, ttId, sEmail, status, date);

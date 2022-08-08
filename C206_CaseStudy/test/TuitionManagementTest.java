@@ -49,14 +49,14 @@ public class TuitionManagementTest {
 		t1 = new Tuition("E01B", "Grammar Practice", "English", "Master your grammar", "1 hour", "Basic Level");
 		t2 = new Tuition("E02A", "Vocabulary", "English", "Train your vocabulary", "1 hour", "Advanced Level");
 	
-		mt1 = new managerTimetable(1, 180.0, "01/01/2022", "01/03/2022", "Online");
-		mt2 = new managerTimetable(2, 180.0, "01/04/2022", "01/07/2022", "F2F");
+		mt1 = new managerTimetable("1", "180.0", "01/01/2022", "01/03/2022", "Online");
+		mt2 = new managerTimetable("2", "180.0", "01/04/2022", "01/07/2022", "F2F");
 		
-		r1 = new Registration(1, 1, "student1@gmail.com", "01/03/2022");
-		r2 = new Registration(2, 2, "student2@gmail.com", "01/03/2022");
+		r1 = new Registration("1", "1", "student1@gmail.com", "01/03/2022");
+		r2 = new Registration("2", "2", "student2@gmail.com", "01/03/2022");
 		
-		s1 = new Student("John Doe", 'M', "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics");
-		s2 = new Student("Jane Dane", 'F', "student2@gmail.com", "01/10/2000", "Singapore", "Humanities");
+		s1 = new Student("John Doe", "M", "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics");
+		s2 = new Student("Jane Dane", "F", "student2@gmail.com", "01/10/2000", "Singapore", "Humanities");
 		
 		tc1 = new ManageTeacher("Jack", "Male", "jack@email.com","Diploma","Math");
 		tc2 = new ManageTeacher("Erf", "Male", "erf@email.com","Diploma","Math");
@@ -77,24 +77,24 @@ public class TuitionManagementTest {
 		assertNotNull("Check if there is valid student details arraylist to add to", studentDetailsList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		TuitionManagement.addStudentDetails(studentDetailsList, s1);
+		TuitionManagement.addStudentDetails(studentDetailsList);
 		assertEquals("Check that Student details arraylist size is 1", 1, studentDetailsList.size());
 		assertSame("Check that Student is added", s1, studentDetailsList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
-		TuitionManagement.addStudentDetails(studentDetailsList, s2);
+		TuitionManagement.addStudentDetails(studentDetailsList);
 		assertEquals("Check that Camcorder arraylist size is 2", 2, studentDetailsList.size());
 		assertSame("Check that Camcorder is added", s2, studentDetailsList.get(1));
 	}
 	
 	@Test
-	public void testRetrieveAllStudentDetails() {
+	public void testViewAllStudentDetails() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", studentDetailsList);
 		
 		//test if the list of Student Details retrieved from the SourceCentre is empty - boundary
-		String allStudentDetails= TuitionManagement.retrieveAllStudent(studentDetailsList);
+		String allStudentDetails= TuitionManagement.viewStudentDetails(studentDetailsList, s1);
 		String testOutput = "";
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allStudentDetails);
 		
