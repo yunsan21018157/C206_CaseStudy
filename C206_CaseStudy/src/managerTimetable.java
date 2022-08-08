@@ -1,14 +1,13 @@
 
 public class managerTimetable {
 	
-	private int ttId;
-	private double price;
+	private String ttId;
+	private String price;
 	private String start_date;
 	private String end_date;
 	private String mode;
 	
-	public managerTimetable(int ttId, double price, String start_date, String end_date, String mode) {
-		super();
+	public managerTimetable(String ttId, String price, String start_date, String end_date, String mode) {
 		this.ttId = ttId;
 		this.price = price;
 		this.start_date = start_date;
@@ -16,19 +15,19 @@ public class managerTimetable {
 		this.mode = mode;
 	}
 
-	public int getTtId() {
+	public String getTtId() {
 		return ttId;
 	}
 
-	public void setTtId(int ttId) {
+	public void setTtId(String ttId) {
 		this.ttId = ttId;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

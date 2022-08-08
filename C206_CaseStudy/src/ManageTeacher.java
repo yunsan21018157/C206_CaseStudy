@@ -7,7 +7,7 @@ public class ManageTeacher {
 	 private String qualification;
 	 private String subjectGroup;
 	 
-	 public void teacherList(String name,String gender, String email,String qualification,String subjectGroup) {
+	 public ManageTeacher(String name,String gender, String email,String qualification,String subjectGroup) {
 	  this.name = name;
 	  this.gender = gender;
 	  this.email = email;

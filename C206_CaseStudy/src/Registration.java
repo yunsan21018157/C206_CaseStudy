@@ -1,12 +1,12 @@
 
 public class Registration {
-	private int regId;
-	private int ttId;
+	private String regId;
+	private String ttId;
 	private String sEmail;
 	private String status; 
 	private String date;
 	
-	public Registration(int regId ,int ttId,String sEmail,String date ) {
+	public Registration(String regId ,String ttId,String sEmail,String date ) {
 		this.regId = regId;
 		this.ttId = ttId;
 		this.sEmail = sEmail;
@@ -27,11 +27,11 @@ public class Registration {
 		return itemInfo;
 	}
 	
-	public int getRegId() { 
+	public String getRegId() { 
 		return regId;
 	}
 	
-	public int getTTId() { 
+	public String getTTId() { 
 		return ttId; 
 	}
 	
