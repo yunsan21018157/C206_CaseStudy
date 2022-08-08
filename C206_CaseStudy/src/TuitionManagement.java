@@ -116,69 +116,58 @@ public class TuitionManagement {
 				while (adminChoice != 9) {
 					if (adminChoice == 1) {                                     // > addStudent Option <
 						addStudentDetails(studentDetailsList, null);
-						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 2) {                              // > deleteStudent Option <
 						deleteStudentDetails(studentDetailsList);
-						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 3) {                              // > addTuitionInformation Option <
 						addTuitionInformation(tuitionList, null);
-						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 4) {                              // > viewTuition Option <
 						retrieveTuition(tuitionList);
-						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 5) {                              // > deleteTuition Option <
 						deleteTuition(tuitionList);
-						line();
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 6) {                              // > addTuitionTimetable Option <
 						addTuitionTimetable(tuitionTimetableList);
-						line();
-						menuManager();
-						managerChoice = Helper.readInt("Enter your choice: ");
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 7) {                              // > viewTuitionTimetable Option <
 						viewTuitionTimetable(tuitionTimetableList);
-						line();
-						menuManager();
-						managerChoice = Helper.readInt("Enter your choice: ");
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (adminChoice == 8) {                              // > deleteTuitionTimetable Option <
 						deleteTuitionTimetable(tuitionTimetableList);
-						line();
-						menuManager();
-						managerChoice = Helper.readInt("Enter your choice: ");
+						menuAdmin();
+						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else {
 						adminChoice = Helper.readInt("Invalid option, enter option again: ");
 						line();
 					}
 				} System.out.println("Account Logged out.");                    // > Account Logging Out <
-				line();
 				role();
 				role = Helper.readInt("Enter role index: ");
-				line();
-		    } else if (role == 4) {
-				System.out.println("Program Ended.");
 				line();
 			} else {
 				role = Helper.readInt("Invalid Index, enter role index again: ");
 				line();
 			}
-		}
+		} System.out.println("Program Ended.");
+		line();
 	}
 	
 	// Added title
@@ -296,10 +285,6 @@ public class TuitionManagement {
 	
 	}
 	
-
-
-
-	
 	// ============================== Option 3 Register tuition for menuStudent() YIXUN ==============================
 	
 	public static void registerTuition(ArrayList<Registration> registrationList) {
@@ -390,6 +375,7 @@ public class TuitionManagement {
 				tuitionTimetableList.remove(i);
 				System.out.println("Timetable removed.");
 				System.out.println("------------------------------");
+				break;
 			} else {
 				continue;
 			}
