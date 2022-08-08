@@ -5,6 +5,94 @@ public class TuitionManagement {
 	/**
 	 * 
 	 */
+	private static final int OPTION_DELETE_TIMETABLE = 8;
+	/**
+	 * 
+	 */
+	private static final int OPTION_VIEW_TIMETABLE = 7;
+	/**
+	 * 
+	 */
+	private static final int OPTION_ADD_TIMETABLE = 6;
+	/**
+	 * 
+	 */
+	private static final int OPTION_DELETE_TUITION = 5;
+	/**
+	 * 
+	 */
+	private static final int OPTION_VIEW_TUITION = 4;
+	/**
+	 * 
+	 */
+	private static final int OPTION_ADD_TUITION = 3;
+	/**
+	 * 
+	 */
+	private static final int OPTION_DELETESTUDENTDETAILS = 2;
+	/**
+	 * 
+	 */
+	//private static final int OPTION_ADDSTUDENTDETAILS = 1;
+	/**
+	 * 
+	 */
+	private static final int OPTION_ADMIN_LOGOUT = 9;
+	/**
+	 * 
+	 */
+	private static final int OPTION_ADMIN = 3;
+	/**
+	 * 
+	 */
+	private static final int OPTION_DELETE_TEACHER = 3;
+	/**
+	 * 
+	 */
+	private static final int OPTION_VIEW_TEACHER = 2;
+	/**
+	 * 
+	 */
+	private static final int OPTION_ADD_TEACHER = 1;
+	/**
+	 * 
+	 */
+	private static final int OPTION_MANAGER_LOGOUT = 4;
+	/**
+	 * 
+	 */
+	private static final int OPTION_MANAGER = 2;
+	/**
+	 * 
+	 */
+	private static final int OPTION_DELETE_RES = 5;
+	/**
+	 * 
+	 */
+	private static final int OPTION_VIEW_RES = 4;
+	/**
+	 * 
+	 */
+	private static final int OPTION_RES = 3;
+	/**
+	 * 
+	 */
+	private static final int OPTION_VIEWSTUDENTDETAILS = 2;
+	/**
+	 * 
+	 */
+	private static final int OPTION_ADDSTUDENTDETAILS = 1;
+	/**
+	 * 
+	 */
+	private static final int OPTION_STUDENT_LOGOUT = 6;
+	/**
+	 * 
+	 */
+	private static final int OPTION_STUDENT = 1;
+	/**
+	 * 
+	 */
 	//extract constants
 	private static final int OPTION_QUIT = 4;
 	public static void main(String[] args) {
@@ -46,32 +134,32 @@ public class TuitionManagement {
 		while (role != OPTION_QUIT) { 
 			
 			// Role = Student
-			if (role == 1) {
+			if (role == OPTION_STUDENT) {
 				menuStudent();
 				studentChoice = Helper.readInt("Enter your choice: ");
 				line();
-				while (studentChoice != 6) {
-					if (studentChoice == 1) {                                   // > addStudent Option <
+				while (studentChoice != OPTION_STUDENT_LOGOUT) {
+					if (studentChoice == OPTION_ADDSTUDENTDETAILS) {                                   // > addStudent Option <
 						addStudentDetails(studentDetailsList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (studentChoice == 2) {                            // > viewStudent Option <
+					} else if (studentChoice == OPTION_VIEWSTUDENTDETAILS) {                            // > viewStudent Option <
 						viewStudentDetails(studentDetailsList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (studentChoice == 3) {                            // > registerForTuition Option <
-						registerTuition(registrationList);
+					} else if (studentChoice == OPTION_RES) {                            // > registerForTuition Option <
+						registerTuition(registrationList, "", "", "", "");
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (studentChoice == OPTION_QUIT) {                            // > addRegisteredTuition Option <
+					} else if (studentChoice == OPTION_VIEW_RES) {                            // > addRegisteredTuition Option <
 						viewRegisterTuition(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
-					}	else if (studentChoice == 5) {                          // > deleteRegisteredTuition Option <
+					}	else if (studentChoice == OPTION_DELETE_RES) {                          // > deleteRegisteredTuition Option <
 						deleteRegisterTuition(registrationList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
@@ -85,22 +173,22 @@ public class TuitionManagement {
 				role = Helper.readInt("Enter role index: ");
 				
 			// Role = Manager	
-			} else if (role == 2) {
+			} else if (role == OPTION_MANAGER) {
 				menuManager();
 				managerChoice = Helper.readInt("Enter your choice: ");
 				line();
-				while (managerChoice != OPTION_QUIT) {
-					if (managerChoice == 1) {                                   // > addTeacher Option <
+				while (managerChoice != OPTION_MANAGER_LOGOUT) {
+					if (managerChoice == OPTION_ADD_TEACHER) {                                   // > addTeacher Option <
 						addTeacher(teacherList);
 						menuManager();
 						managerChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (managerChoice == 2) {                            // > viewTeacher Option <
+					} else if (managerChoice == OPTION_VIEW_TEACHER) {                            // > viewTeacher Option <
 						retrieveAllTeacher(teacherList);
 						menuManager();
 						managerChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (managerChoice == 3) {                            // > deleteTeacher Option <
+					} else if (managerChoice == OPTION_DELETE_TEACHER) {                            // > deleteTeacher Option <
 						deleteTeacher(teacherList);
 						menuManager();
 						managerChoice = Helper.readInt("Enter your choice: ");
@@ -114,47 +202,47 @@ public class TuitionManagement {
 				role = Helper.readInt("Enter role index: ");
 				
 			// Role = Admin
-			} else if (role == 3) {                                              
+			} else if (role == OPTION_ADMIN) {                                              
 				menuAdmin();
 				adminChoice = Helper.readInt("Enter your choice: ");
 				line();
-				while (adminChoice != 9) {
-					if (adminChoice == 1) {                                     // > addStudent Option <
+				while (adminChoice != OPTION_ADMIN_LOGOUT) {
+					if (adminChoice == OPTION_ADDSTUDENTDETAILS) {                                     // > addStudent Option <
 						addStudentDetails(studentDetailsList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 2) {                              // > deleteStudent Option <
+					} else if (adminChoice == OPTION_DELETESTUDENTDETAILS) {                              // > deleteStudent Option <
 						deleteStudentDetails(studentDetailsList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 3) {                              // > addTuitionInformation Option <
+					} else if (adminChoice == OPTION_ADD_TUITION) {                              // > addTuitionInformation Option <
 						addTuitionInformation(tuitionList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == OPTION_QUIT) {                              // > viewTuition Option <
+					} else if (adminChoice == OPTION_VIEW_TUITION) {                              // > viewTuition Option <
 						retrieveTuition(tuitionList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 5) {                              // > deleteTuition Option <
+					} else if (adminChoice == OPTION_DELETE_TUITION) {                              // > deleteTuition Option <
 						deleteTuition(tuitionList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 6) {                              // > addTuitionTimetable Option <
+					} else if (adminChoice == OPTION_ADD_TIMETABLE) {                              // > addTuitionTimetable Option <
 						addTuitionTimetable(tuitionTimetableList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 7) {                              // > viewTuitionTimetable Option <
+					} else if (adminChoice == OPTION_VIEW_TIMETABLE) {                              // > viewTuitionTimetable Option <
 						viewTuitionTimetable(tuitionTimetableList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
-					} else if (adminChoice == 8) {                              // > deleteTuitionTimetable Option <
+					} else if (adminChoice == OPTION_DELETE_TIMETABLE) {                              // > deleteTuitionTimetable Option <
 						deleteTuitionTimetable(tuitionTimetableList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
@@ -250,7 +338,7 @@ public class TuitionManagement {
 	
 	// ============================== Option 2 View student for menuStudent() AHMAD ==============================
 	
-	public static void viewStudentDetails(ArrayList<Student> studentDetailsList){
+	public static String viewStudentDetails(ArrayList<Student> studentDetailsList){
 		String output = "";
 		String sName = "";
 		String sGender = "";
@@ -281,7 +369,8 @@ public class TuitionManagement {
 			
 			output += String.format("%-15s %-10s %-25s %-15s %-20s\n", sName, sGender, sEmail, sDOB, sCountry, sInterest);
 		}
-		System.out.println(output);
+		//System.out.println(output);
+		return(output);
 	}
 	
 	// ============================== Option 2 Delete student for menuAdmin() AHMAD ==============================
@@ -309,12 +398,12 @@ public class TuitionManagement {
 	
 	// ============================== Option 3 Register tuition for menuStudent() YIXUN ==============================
 	
-	public static void registerTuition(ArrayList<Registration> registrationList) {
+	public static void registerTuition(ArrayList<Registration> registrationList, String regId, String ttId, String sEmail, String date) { //int to check the size 
 		
-		String regId = Helper.readString("Enter registration ID > ");
-		String ttId = Helper.readString("Enter tuition timetable ID > ");
-		String sEmail = Helper.readString("Enter student email > ");
-		String date = Helper.readString("Enter date > ");
+		regId = Helper.readString("Enter registration ID > ");
+		ttId = Helper.readString("Enter tuition timetable ID > ");
+		sEmail = Helper.readString("Enter student email > ");
+		date = Helper.readString("Enter date > ");
 		
 		registrationList.add(new Registration(regId, ttId, sEmail, date));
 		
@@ -322,11 +411,13 @@ public class TuitionManagement {
 		System.out.println("You have registered for this timetable.");
 		System.out.println("------------------------------");
 		
+	
 	}
+
 	
 	// ============================== Option 4 View tuition registration for menuStudent() YIXUN ==============================
 	
-	public static void viewRegisterTuition(ArrayList<Registration> registrationList){
+	public static String viewRegisterTuition(ArrayList<Registration> registrationList){
 		String output = "";
 		String regId = "";
 		String ttId = "";
@@ -335,31 +426,32 @@ public class TuitionManagement {
 		String date = "";
 		
 		
-		//title will be set once
 		output = String.format("%-20s %-20s %-25s %-20s %-20s\n", "REGISTRATION ID", "TUITION ID",
 				"STUDENT EMAIL", "STATUS", "DATE"); 
 		
 		for (int i = 0; i < registrationList.size(); i++) {
 			String regId2 = registrationList.get(i).getRegId();
-			regId = regId2;
+			regId = regId2; //refactored
 			String ttId2 = registrationList.get(i).getTTId();
-			ttId = ttId2;
+			ttId = ttId2; //refactored
 			String sEmail2 = registrationList.get(i).getSEmail();
-			sEmail = sEmail2;
+			sEmail = sEmail2; //refactored
 			String status2 = registrationList.get(i).getStatus();
-			status = status2;
+			status = status2; //refactored
 			String date2 = registrationList.get(i).getDate();
-			date = date2;
-		
+			date = date2; //refactored
+		 
 			
 			output += String.format("%-20s %-20s %-25s %-20s %-20s\n", regId, ttId, sEmail, status, date);
 		}
-		System.out.println(output);
+		//System.out.println(output);
+		return (output);
 	}
+	
 	
 	// ============================== Option 5 Delete tuition registration for menuStudent() YIXUN ==============================
 	
-	public static void deleteRegisterTuition(ArrayList<Registration> registrationList){
+	public static int deleteRegisterTuition(ArrayList<Registration> registrationList){
 		
 		TuitionManagement.viewRegisterTuition(registrationList);
 		
@@ -376,6 +468,7 @@ public class TuitionManagement {
 				continue;
 			}
 		}
+		return registrationList.size();
 	}
 	
     // ============================== Option 6 Add tuition timetable for menuAdmin() JOSEPH ==============================
@@ -399,7 +492,7 @@ public class TuitionManagement {
 	
 	// ============================== Option 7 View tuition timetable for menuAdmin() JOSEPH ==============================
 	
-	public static void viewTuitionTimetable(ArrayList<managerTimetable> tuitionTimetableList) {
+	public static String viewTuitionTimetable(ArrayList<managerTimetable> tuitionTimetableList) {
 				
 		String output = "";
 		String ttId = "";
@@ -423,7 +516,8 @@ public class TuitionManagement {
 			
 			output += String.format("%-15s %-10s %-15s %-15s %-20s\n", ttId, price, start_date, end_date, mode);
 		}
-		System.out.println(output);
+		//System.out.println(output);
+		return (output);
 	}
 		
 	// ============================== Option 8 Delete tuition timetable for menuAdmin() JOSEPH ==============================
@@ -467,7 +561,7 @@ public class TuitionManagement {
 
 	// ============================== Option 2 View teacher for menuManager() JAYDEN  ==============================
 	
-	public static void retrieveAllTeacher(ArrayList<ManageTeacher> teacherList) {
+	public static String retrieveAllTeacher(ArrayList<ManageTeacher> teacherList) {
 		String output = "";
 		String name = "";
 		String gender = "";
@@ -490,7 +584,8 @@ public class TuitionManagement {
 			
 			output += String.format("%-10s %-10s %-25s %-20s %-20s\n", name, gender, email, qualification, subjectGroup);
 		}
-		System.out.println(output);
+		//System.out.println(output);
+		return (output);
 	}
 	
 	// ============================== Option 3 Delete teacher for menuManager() JAYDEN ==============================
@@ -535,7 +630,7 @@ public class TuitionManagement {
 	
 	// ============================== Option 4 View tuition info for menuAdmin() YUNSAN ==============================
 	
-		public static void retrieveTuition(ArrayList<Tuition> tuitionList) {
+		public static String retrieveTuition(ArrayList<Tuition> tuitionList) {
 			String output = "";
 			String code = "";
 			String title = "";
@@ -559,7 +654,8 @@ public class TuitionManagement {
 				
 				output += String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", code, title, name, desc, duration, pre_req);
 			}
-			System.out.println(output);
+			//System.out.println(output);
+			return (output);
 		
 	}
 
@@ -589,6 +685,7 @@ public class TuitionManagement {
 					System.out.println("------------------------------");
 				}
 			}
+			
 		}
 }
 		

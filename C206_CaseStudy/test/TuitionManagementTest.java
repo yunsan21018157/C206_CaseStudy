@@ -72,7 +72,7 @@ public class TuitionManagementTest {
 	
 	//ahmad
 	@Test
-	public void testAddStudentDetails() { //test1
+	public void testAddStudentDetails() { 
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid student details arraylist to add to", studentDetailsList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
@@ -91,22 +91,22 @@ public class TuitionManagementTest {
 	@Test
 	public void testViewAllStudentDetails() {
 		// Test if Item list is not null but empty -boundary
-		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", studentDetailsList);
+		assertNotNull("Test if there is valid Students arraylist to retrieve item", studentDetailsList);
 		
 		//test if the list of Student Details retrieved from the SourceCentre is empty - boundary
-		String allStudentDetails= TuitionManagement.viewStudentDetails(studentDetailsList, s1);
+		String allStudentDetails = TuitionManagement.viewStudentDetails(studentDetailsList);
 		String testOutput = "";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allStudentDetails);
+		
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		TuitionManagement.addStudentDetails(studentDetailsList, s1);
-		TuitionManagement.addStudentDetails(studentDetailsList, s2);
+		TuitionManagement.addStudentDetails(studentDetailsList);
+		TuitionManagement.addStudentDetails(studentDetailsList);
 		assertEquals("Test that Student Details arraylist size is 2", 2, studentDetailsList.size());
 		
 		//test if the expected output string same as the list of Student Details retrieved from the SourceCentre	
-		allStudentDetails= TuitionManagement.retrieveAllStudent(studentDetailsList);
-		testOutput = String.format("%-30s %-10s %-30s %-20s %-20s %-20s\n","John Doe", 'M', "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s %-20s\n","Jane Dane", 'F', "student2@gmail.com", "01/10/2000", "Singapore", "Humanities");
+		allStudentDetails= TuitionManagement.viewStudentDetails(studentDetailsList);
+		testOutput = String.format("%-15s %-10s %-25s %-15s %-20s\n","John Doe", "M", "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics");
+		testOutput += String.format("%-15s %-10s %-25s %-15s %-20s\n","Jane Dane", "F", "student2@gmail.com", "01/10/2000", "Singapore", "Humanities");
 	
 		assertEquals("Test that ViewAllStudentDetailsList", testOutput, allStudentDetails);
 		
@@ -118,11 +118,11 @@ public class TuitionManagementTest {
 		assertNotNull("Test if there is valid Student Details arraylist to retrieve item", studentDetailsList);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
-		TuitionManagement.addStudentDetails(studentDetailsList, s1);
-		TuitionManagement.addStudentDetails(studentDetailsList, s2);
+		TuitionManagement.addStudentDetails(studentDetailsList);
+		TuitionManagement.addStudentDetails(studentDetailsList);
 		
-		TuitionManagement.deleteStudentDetails(studentDetailsList, "John");
-		TuitionManagement.deleteStudentDetails(studentDetailsList, "Jane");
+		TuitionManagement.deleteStudentDetails(studentDetailsList);
+		TuitionManagement.deleteStudentDetails(studentDetailsList);
 		
 		assertEquals("Check that Student Details arraylist size is 0", 0, studentDetailsList.size());
 		
@@ -136,13 +136,13 @@ public class TuitionManagementTest {
 		assertNotNull("Check if there is valid Registration  arraylist to add to", registrationList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		TuitionManagement.registerTuition(registrationList);
+		TuitionManagement.registerTuition(registrationList, "1", "1", "student1@gmail.com", "01/03/2022");
 		assertEquals("Check that Registration arraylist size is 1", 1, registrationList.size());
 		assertSame("Check that Registration is added", r1, registrationList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
-		TuitionManagement.registerTuition(registrationList);
+		TuitionManagement.registerTuition(registrationList, "2", "2", "student2@gmail.com", "02/03/2022");
 		assertEquals("Check that Registration arraylist size is 2", 2, registrationList.size());
 		assertSame("Check that Registration is added", r2, registrationList.get(1));
 	}
@@ -151,17 +151,23 @@ public class TuitionManagementTest {
 	public void testViewRegisterTuiton() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Registration arraylist to retrieve item", registrationList);
-		String allRegistration = TuitionManagement.viewRegisterTuiton(registrationList);
+		String allRegistration = TuitionManagement.viewRegisterTuition(registrationList);
 		String testOutput = "";
 		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		TuitionManagement.registerTuition(registrationList, "1", "1", "student1@gmail.com", "01/03/2022");
+		TuitionManagement.registerTuition(registrationList, "2", "2", "student2@gmail.com", "01/03/2022");
+		assertEquals("Test that registration arraylist size is 2", 2, registrationList.size());
+		
 		//test if the expected output string same as the list of registrations retrieved from the SourceCentre	
-		allRegistration= TuitionManagement.viewRegisterTuiton(registrationList);
-		testOutput = String.format("%-10d %-30s %-10s %-10s %-20s\n",1, 1, "student1@gmail.com", "01/03/2022");
-		testOutput += String.format("%-10d %-30s %-10s %-10s %-20s\n",2, 2, "student2@gmail.com", "01/03/2022");
+		allRegistration= TuitionManagement.viewRegisterTuition(registrationList);
+		testOutput = String.format("%-20s %-20s %-25s %-20s %-20s\n", "1", "1", "student1@gmail.com", "", "01/03/2022");
+		testOutput += String.format("%-20s %-20s %-25s %-20s %-20s\n", "2", "2", "student2@gmail.com", "", "01/03/2022");
 	
 	
 		assertEquals("Test that testViewRegisterTuiton", testOutput, allRegistration);
 		
+			
 	}
 	
 	@Test
@@ -170,11 +176,11 @@ public class TuitionManagementTest {
 		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
-		TuitionManagement.registerTuition(1, 1, "student1@gmail.com", "01/03/2022");
-		TuitionManagement.registerTuition(2, 2, "student2@gmail.com", "02/03/2022");
+		TuitionManagement.registerTuition(registrationList, "1", "1", "student1@gmail.com", "01/03/2022");
+		TuitionManagement.registerTuition(registrationList, "2", "2", "student2@gmail.com", "02/03/2022");
 		
-		TuitionManagement.deleteRegisterTuition(tuitionList, 1);
-		TuitionManagement.deleteRegisterTuition(tuitionList, 2);
+		TuitionManagement.deleteRegisterTuition(registrationList);
+		TuitionManagement.deleteRegisterTuition(registrationList);
 		
 		assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());
 		
@@ -194,23 +200,25 @@ public class TuitionManagementTest {
 		  assertSame("Check that Registration is added", r2, registrationList.get(1));
 		 }
 		 
-		 @Test
-		 public void testViewTuitionTimetable() {
-		  assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
-		  arrayList<managerTimetable> allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
-		  String testOutput = String.format("%-10d %-10s %-10s %-10s %-10s\n", 1, 10.00, "20/2/2022", "31/5/2022", "Online");
-		  
-		  for (int i = 0; i < tuitionTimetableList.size(); i++ ) {
-			  int ttId = tuitionTimetableList.get(i).getTtId();
-			  double price = tuitionTimetableList.get(i).getPrice();
-			  String start_date = tuitionTimetableList.get(i).getStart_date();
-			  String end_date = tuitionTimetableList.get(i).getEnd_date();
-			  String mode = tuitionTimetableList.get(i).getMode();
-			  testOutput += ("", ttId, price, start_date, end_date, mode);
-		  }
-		  
-		  assertEquals("Check allTuitionTimetable", testOutput, allTuitionTimetable);
-		 }
+		 
+	  @Test
+	  public void testViewTuitionTimetable() {
+			// Test if Item list is not null but empty -boundary
+		assertNotNull("Make sure there is no empty tuition timetable list", tuitionTimetableList);
+		String allTuitionTimetable = TuitionManagement.viewTuitionTimetable(tuitionTimetableList);
+		String testOutput = "";
+			
+		TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+		TuitionManagement.addTuitionTimetable(tuitionTimetableList);
+		assertEquals("Test that registration arraylist size is 2", 2, registrationList.size());
+			
+		//test if the expected output string same as the list of registrations retrieved from the SourceCentre	
+		allTuitionTimetable= TuitionManagement.viewRegisterTuition(registrationList);
+		testOutput = String.format("%-15s %-10s %-15s %-15s %-20s\n", "1", "180.0", "01/01/2022", "01/03/2022", "Online");
+		testOutput += String.format("%-15s %-10s %-15s %-15s %-20s\n", "2", "180.0", "01/04/2022", "01/07/2022", "F2F");
+		
+		assertEquals("Test that testViewRegisterTuiton", testOutput, allTuitionTimetable);
+	 }
 		 
 		 @Test
 		public void testDeleteTuitionTimetable() {
@@ -224,6 +232,7 @@ public class TuitionManagementTest {
 				
 			assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());
 		 }
+		 
 	
 	//yunsan
 	@Test
@@ -232,13 +241,13 @@ public class TuitionManagementTest {
 		assertNotNull("Check if there is valid Tuition arraylist to add to", tuitionList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		TuitionManagement.addTuitionInformation(tuitionList, t1);
+		TuitionManagement.addTuitionInformation(tuitionList);
 		assertEquals("Check that Tuition arraylist size is 1", 1, tuitionList.size());
 		assertSame("Check that Tuition is added", t1, tuitionList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
-		TuitionManagement.addTuitionInformation(tuitionList, t1);
+		TuitionManagement.addTuitionInformation(tuitionList);
 		assertEquals("Check that Tuition arraylist size is 2", 2, tuitionList.size());
 		assertSame("Check that Tuition is added", t2, tuitionList.get(1));
 	}
@@ -251,11 +260,10 @@ public class TuitionManagementTest {
 		//test if the list of tuitions retrieved from the SourceCentre is empty - boundary
 		String allTuition= TuitionManagement.retrieveTuition(tuitionList);
 		String testOutput = "";
-		assertEquals("Check that RetrieveAllTuitionList", testOutput, allTuition);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		TuitionManagement.addTuitionInformation(tuitionList, t1);
-		TuitionManagement.addTuitionInformation(tuitionList, t2);
+		TuitionManagement.addTuitionInformation(tuitionList);
+		TuitionManagement.addTuitionInformation(tuitionList);
 		assertEquals("Test that tuition arraylist size is 2", 2, tuitionList.size());
 		
 		//test if the expected output string same as the list of tuition retrieved from the SourceCentre	
@@ -272,11 +280,11 @@ public class TuitionManagementTest {
 		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
-		TuitionManagement.addTuitionInformation(tuitionList, t1);
-		TuitionManagement.addTuitionInformation(tuitionList, t2);
+		TuitionManagement.addTuitionInformation(tuitionList);
+		TuitionManagement.addTuitionInformation(tuitionList);
 		
-		TuitionManagement.deleteTuition(tuitionList, "E01B"); 
-		TuitionManagement.deleteTuition(tuitionList, "E02A");
+		TuitionManagement.deleteTuition(tuitionList); 
+		TuitionManagement.deleteTuition(tuitionList);
 		
 		assertEquals("Check that Tuition arraylist size is 0", 0, tuitionList.size());
 		
@@ -288,19 +296,20 @@ public class TuitionManagementTest {
 	  assertNotNull("Test if there is valid Teacher arraylist to add to", teacherList);
 	  
 	  //Given an empty list, after adding 1 item, the size of the list is 1
-	  TuitionManagement.addTeacher(teacherList, t1);  
+	  TuitionManagement.addTeacher(teacherList);  
 	  assertEquals("Test if that Teacher arrayList size is 1?", 1, teacherList.size());
 	  
 	  //The item just added is as same as the first item of the list
 	  assertSame("Test that Teacher is added same as 1st item of the list?", t1, teacherList.get(0));
 	  
 	  //Add another item. test The size of the list is 2?
-	  TuitionManagement.addTeacher(teacherList, t2);
-	  TuitionManagement.addTeacher(teacherList, t3);
+	  TuitionManagement.addTeacher(teacherList);
+	  TuitionManagement.addTeacher(teacherList);
 	  assertEquals("Test that Teacher arraylist size is 3?", 3, teacherList.size());
-	  assertSame("Test that teacher is added same as 3rd item of the list?", t3, teacherList.get(2));
+	  assertSame("Test that teacher is added same as 3rd item of the list?", t2, teacherList.get(1));
 	 }
 
+	
 	 @Test
 	 public void testRetrieveAllTeachers() {
 	  // Test if Item list is not null but empty, so that can add a new item
@@ -309,11 +318,10 @@ public class TuitionManagementTest {
 	  //test if the list of teachers retrieved from the TuitionManager is empty
 	  String allTeachers = TuitionManagement.retrieveAllTeacher(teacherList);
 	  String testOutput = "";
-	  assertEquals("Check that ViewAllTeacherlist", testOutput, allTeachers);
 	    
 	  //Given an empty list, after adding 2 items, test if the size of the list is 2
-	  TuitionManagement.addTeacher(teacherList, t1);
-	  TuitionManagement.addTeacher(teacherList, t2);
+	  TuitionManagement.addTeacher(teacherList);
+	  TuitionManagement.addTeacher(teacherList);
 	  assertEquals("Test if that Teacher arraylist size is 2?", 2, teacherList.size());
 	  
 	  //test if the expected output string same as the list of camcorders retrieved from the SourceCentre
@@ -322,7 +330,7 @@ public class TuitionManagementTest {
 	  testOutput = String.format("%-10s %-10s %-10s %-10s %-10s\n","Jack", "Male", "jack@email.com","Diploma","Math");
 	  testOutput += String.format("%-10s %-10s %-10s %-10s %-10s\n","Erf", "Male", "erf@email.com","Diploma","Math");
 	 
-	  assertEquals("Check that ViewAllTeacherlist", testOutput, allTeacher);
+	  assertEquals("Check that ViewAllTeacherlist", testOutput, allTeachers);
 	  
 	 }
 	 
@@ -332,11 +340,11 @@ public class TuitionManagementTest {
 	 assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
 	   
 	 //Given an empty list, after adding 2 items, test if the size of the list is 0 - normal
-	 TuitionManagement.addTeacher(teacherList, tc1);
-	 TuitionManagement.addTeacher(tuitionList, tc2);
+	 TuitionManagement.addTeacher(teacherList);
+	 TuitionManagement.addTeacher(teacherList);
 	 
-	 TuitionManagement.deleteTeacher(teacherList, "Jack");
-	 TuitionManagement.deleteTeacher(teacherList, "Erf");
+	 TuitionManagement.deleteTeacher(teacherList);
+	 TuitionManagement.deleteTeacher(teacherList);
 	   
 	 assertEquals("Check that Teacher arraylist size is 0", 0, teacherList.size());
 	   
