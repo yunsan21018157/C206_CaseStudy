@@ -47,12 +47,12 @@ public class TuitionManagement {
 				line();
 				while (studentChoice != 6) {
 					if (studentChoice == 1) {                                   // > addStudent Option <
-						addStudentDetails(studentDetailsList, null);
+						addStudentDetails(studentDetailsList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
 					} else if (studentChoice == 2) {                            // > viewStudent Option <
-						retrieveAllStudent(studentDetailsList);
+						viewStudentDetails(studentDetailsList);
 						menuStudent();
 						studentChoice = Helper.readInt("Enter your choice: ");
 						line();
@@ -115,7 +115,7 @@ public class TuitionManagement {
 				line();
 				while (adminChoice != 9) {
 					if (adminChoice == 1) {                                     // > addStudent Option <
-						addStudentDetails(studentDetailsList, null);
+						addStudentDetails(studentDetailsList);
 						menuAdmin();
 						adminChoice = Helper.readInt("Enter your choice: ");
 						line();
@@ -225,65 +225,56 @@ public class TuitionManagement {
 
 	// ============================== Option 1 Add student for menuStudent() AHMAD ==============================
 	
-	public static Student addStudentDetails() {
+	public static void addStudentDetails(ArrayList<Student> studentDetailsList) {
+		
 		String sName = Helper.readString("Enter Student Name > ");
 		char sGender = Helper.readChar("Enter Gender (M/F) > ");
-		String sEmail = Helper.readString("Enter Email > ");
-		String sDOB = Helper.readString("Enter date of birth > ");
-		String sCountry = Helper.readString("Enter which country you live in > ");
-		String sInterest = Helper.readString("Enter the subject you are interested in > ");
-	
-		Student student = new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest);
-		return student;
-	}
-	public static void addStudentDetails(ArrayList<Student> studentDetailsList, Student student) {
+		String sEmail = Helper.readString("Enter Student Email > ");
+		String sDOB = Helper.readString("Enter Student DOB (DD/MM/YYY) > ");
+		String sCountry = Helper.readString("Enter Student Country > ");
+		String sInterest = Helper.readString("Enter Student Interest > ");
 		
-		studentDetailsList.add(student);
+		studentDetailsList.add(new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest));
+		
+		System.out.println("You have Registered for a Student Account.");
+		System.out.println("------------------------------");
+		
 	}
 
 	
 	// ============================== Option 2 View student for menuStudent() AHMAD ==============================
 	
-	public static String retrieveAllStudent(ArrayList<Student> studentDetailsList) {
-		String output = "";
+	public static void viewStudentDetails(ArrayList<Student> studentDetailsList){
 		
 		for (int i = 0; i < studentDetailsList.size(); i++) {
-			output += String.format("$-84s\n", studentDetailsList.get(i).toString());
+			System.out.println("Student Name: " + studentDetailsList.get(i).getsName());
+			System.out.println("Gender: " + studentDetailsList.get(i).getsGender());
+			System.out.println("Student Email: " + studentDetailsList.get(i).getsEmail());
+			System.out.println("Student DOB: " + studentDetailsList.get(i).getsDOB());
+			System.out.println("Student Country: " + studentDetailsList.get(i).getsCountry());
+			System.out.println("Student Interest: " + studentDetailsList.get(i).getsInterest());
+			System.out.println("--------------------------------------------------");
 		}
-		return output;
-	}
-	
-	public static void viewAllStudentDetails(ArrayList<Student> studentDetailsList) {
-		TuitionManagement.setHeader("STUDENT DETAILS LIST");
-		String output = String.format("%-30s %-10S %-10s %-30s %-10s %-10s", "STUDENT NAME", "GENDER", "EMAIL", "DATE OF BIRTH", "COUNTRY", "SUBJECT");
-		output += retrieveAllStudent(studentDetailsList);
-		System.out.println(output);
 	}
 	
 	// ============================== Option 2 Delete student for menuAdmin() AHMAD ==============================
 	
-	public static String deleteStudentDetails(ArrayList<Student> studentDetailsList) {
-		TuitionManagement.retrieveAllStudent(studentDetailsList);
+	public static void deleteStudentDetails(ArrayList<Student> studentDetailsList){
 		
-		String delStudent = Helper.readString("Enter the student name you want to delete: ");
-		String delName = "";
+		String deletesName = Helper.readString("Enter the Student Name you want to delete: ");
+		
 		for (int i = 0; i < studentDetailsList.size(); i++) {
-			delName += studentDetailsList.get(i).getName();
-			if (delStudent == delName) {
+			String sName = studentDetailsList.get(i).getsName();
+			if (sName == deletesName) {
 				studentDetailsList.remove(i);
 				System.out.println("Student removed.");
 				System.out.println("------------------------------");
 			} else {
-				System.out.println("Invalid tuition code");
+				continue;
 			}
 		}
-		return delStudent;
 	}
-	public static void deleteStudentDetails(ArrayList<Tuition> studentDetailsList, Student delName) {
-		
-		studentDetailsList.remove(delName);
-	
-	}
+
 	
 	// ============================== Option 3 Register tuition for menuStudent() YIXUN ==============================
 	

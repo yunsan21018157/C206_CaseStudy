@@ -1,16 +1,35 @@
 
-public class Student extends Users{
+public class Student{
+	private String sName;
+	private char sGender;
 	private String sEmail;
 	private String sDOB;
 	private String sCountry;
 	private String sInterest;
 	
-	public Student(String name, char gender, String sEmail, String sDOB, String sCountry, String sInterest) {
-		super(name, gender);
+	public Student(String sName, char sGender, String sEmail, String sDOB, String sCountry, String sInterest) {
+		this.sName = sName;
+		this.sGender = sGender;
 		this.sEmail = sEmail;
 		this.sDOB = sDOB;
 		this.sCountry = sCountry;
 		this.sInterest = sInterest;
+	}
+	
+	public String getsName() {
+		return sName;
+	}
+	
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
+	
+	public char getsGender() {
+		return sGender;	
+	}
+	
+	public void setsGender(char sGender) {
+		this.sGender = sGender;
 	}
 	
 	public String getsEmail() {
@@ -46,8 +65,7 @@ public class Student extends Users{
 	}
 	
 	public String toString() {
-		String output = super.toString();
-		output = String.format("%-63s %-20s %-20s %-20s %-20s", output, sEmail, sDOB, sCountry, sInterest);
-		return output;
+		String userInfo = String.format("%-63s %-20s %-20s %-20s %-20s", sName, sGender, sEmail, sDOB, sCountry, sInterest);
+		return userInfo;
 	}
 }
