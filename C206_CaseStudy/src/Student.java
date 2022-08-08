@@ -1,13 +1,13 @@
 
 public class Student{
 	private String sName;
-	private char sGender;
+	private String sGender;
 	private String sEmail;
 	private String sDOB;
 	private String sCountry;
 	private String sInterest;
 	
-	public Student(String sName, char sGender, String sEmail, String sDOB, String sCountry, String sInterest) {
+	public Student(String sName, String sGender, String sEmail, String sDOB, String sCountry, String sInterest) {
 		this.sName = sName;
 		this.sGender = sGender;
 		this.sEmail = sEmail;
@@ -24,11 +24,11 @@ public class Student{
 		this.sName = sName;
 	}
 	
-	public char getsGender() {
+	public String getsGender() {
 		return sGender;	
 	}
 	
-	public void setsGender(char sGender) {
+	public void setsGender(String sGender) {
 		this.sGender = sGender;
 	}
 	

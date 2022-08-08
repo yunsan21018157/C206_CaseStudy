@@ -21,8 +21,8 @@ public class TuitionManagement {
 		registrationList.add(new Registration("1", "1", "student1@gmail.com", "01/03/2022"));
 		registrationList.add(new Registration("2", "2", "student2@gmail.com", "01/03/2022"));
 		
-		studentDetailsList.add(new Student("John Doe", 'M', "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics"));
-		studentDetailsList.add(new Student("Jane Dane", 'F', "student2@gmail.com", "01/10/2000", "Singapore", "Humanities"));	
+		studentDetailsList.add(new Student("John Doe", "M", "student1@gmail.com", "10/01/2000", "Singapore", "Mathematics"));
+		studentDetailsList.add(new Student("Jane Dane", "F", "student2@gmail.com", "01/10/2000", "Singapore", "Humanities"));	
 		
 		teacherList.add(new ManageTeacher("Jack", "Male", "jack@email.com","Diploma","Math"));
 		teacherList.add(new ManageTeacher("Erf", "Male", "erf@email.com","Diploma","Math"));
@@ -228,7 +228,7 @@ public class TuitionManagement {
 	public static void addStudentDetails(ArrayList<Student> studentDetailsList) {
 		
 		String sName = Helper.readString("Enter Student Name > ");
-		char sGender = Helper.readChar("Enter Gender (M/F) > ");
+		String sGender = Helper.readString("Enter Gender (M/F) > ");
 		String sEmail = Helper.readString("Enter Student Email > ");
 		String sDOB = Helper.readString("Enter Student DOB (DD/MM/YYY) > ");
 		String sCountry = Helper.readString("Enter Student Country > ");
@@ -236,6 +236,7 @@ public class TuitionManagement {
 		
 		studentDetailsList.add(new Student(sName, sGender, sEmail, sDOB, sCountry, sInterest));
 		
+		System.out.println("------------------------------");
 		System.out.println("You have Registered for a Student Account.");
 		System.out.println("------------------------------");
 		
@@ -245,28 +246,46 @@ public class TuitionManagement {
 	// ============================== Option 2 View student for menuStudent() AHMAD ==============================
 	
 	public static void viewStudentDetails(ArrayList<Student> studentDetailsList){
+		String output = "";
+		String sName = "";
+		String sGender = "";
+		String sEmail = "";
+		String sDOB = "";
+		String sCountry = "";
+		String sInterest = "";
+		
+		
+		//title will be set once
+		output = String.format("%-15s %-10s %-25s %-15s %-20s\n", "STUDENT NAME", "GENDER",
+				"STUDENT EMAIL", "DATE-OF-BIRTH", "COUNTRY", "INTEREST"); 
 		
 		for (int i = 0; i < studentDetailsList.size(); i++) {
-			System.out.println("Student Name: " + studentDetailsList.get(i).getsName());
-			System.out.println("Gender: " + studentDetailsList.get(i).getsGender());
-			System.out.println("Student Email: " + studentDetailsList.get(i).getsEmail());
-			System.out.println("Student DOB: " + studentDetailsList.get(i).getsDOB());
-			System.out.println("Student Country: " + studentDetailsList.get(i).getsCountry());
-			System.out.println("Student Interest: " + studentDetailsList.get(i).getsInterest());
-			System.out.println("--------------------------------------------------");
+			sName = studentDetailsList.get(i).getsName();
+			sGender = studentDetailsList.get(i).getsGender();
+			sEmail = studentDetailsList.get(i).getsEmail();
+			sDOB = studentDetailsList.get(i).getsDOB();
+			sCountry = studentDetailsList.get(i).getsCountry();
+			sInterest = studentDetailsList.get(i).getsInterest();
+		
+			
+			output += String.format("%-15s %-10s %-25s %-15s %-20s\n", sName, sGender, sEmail, sDOB, sCountry, sInterest);
 		}
+		System.out.println(output);
 	}
 	
 	// ============================== Option 2 Delete student for menuAdmin() AHMAD ==============================
 	
 	public static void deleteStudentDetails(ArrayList<Student> studentDetailsList){
 		
+		TuitionManagement.viewStudentDetails(studentDetailsList);
+		
 		String deletesName = Helper.readString("Enter the Student Name you want to delete: ");
 		
 		for (int i = 0; i < studentDetailsList.size(); i++) {
 			String sName = studentDetailsList.get(i).getsName();
-			if (sName == deletesName) {
+			if (sName.equalsIgnoreCase(deletesName)) {
 				studentDetailsList.remove(i);
+				System.out.println("------------------------------");
 				System.out.println("Student removed.");
 				System.out.println("------------------------------");
 			} else {
@@ -287,6 +306,7 @@ public class TuitionManagement {
 		
 		registrationList.add(new Registration(regId, ttId, sEmail, date));
 		
+		System.out.println("------------------------------");
 		System.out.println("You have registered for this timetable.");
 		System.out.println("------------------------------");
 		
@@ -304,7 +324,7 @@ public class TuitionManagement {
 		
 		
 		//title will be set once
-		output = String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", "REGISTRATION ID", "TUITION ID",
+		output = String.format("%-20s %-20s %-25s %-20s %-20s\n", "REGISTRATION ID", "TUITION ID",
 				"STUDENT EMAIL", "STATUS", "DATE"); 
 		
 		for (int i = 0; i < registrationList.size(); i++) {
@@ -315,7 +335,7 @@ public class TuitionManagement {
 			date = registrationList.get(i).getDate();
 		
 			
-			output += String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", regId, ttId, sEmail, status, date);
+			output += String.format("%-20s %-20s %-25s %-20s %-20s\n", regId, ttId, sEmail, status, date);
 		}
 		System.out.println(output);
 	}
@@ -324,12 +344,15 @@ public class TuitionManagement {
 	
 	public static void deleteRegisterTuition(ArrayList<Registration> registrationList){
 		
-		int del_ttID = Helper.readInt("Enter the tuition timetable ID you want to delete: ");
+		TuitionManagement.viewRegisterTuition(registrationList);
+		
+		String del_ttID = Helper.readString("Enter the registration ID you want to delete: ");
 		
 		for (int i = 0; i < registrationList.size(); i++) {
 			String ttID = registrationList.get(i).getRegId();
 			if (ttID.equals(del_ttID)) {
 				registrationList.remove(i);
+				System.out.println("------------------------------");
 				System.out.println("Registration removed.");
 				System.out.println("------------------------------");
 			} else {
@@ -370,7 +393,7 @@ public class TuitionManagement {
 		
 		
 		//title will be set once
-		output = String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", "TUITION ID", "PRICE",
+		output = String.format("%-15s %-10s %-15s %-15s %-20s\n", "TUITION ID", "PRICE",
 				"START DATE", "END DATE", "MODE"); 
 		
 		for (int i = 0; i < tuitionTimetableList.size(); i++) {
@@ -381,7 +404,7 @@ public class TuitionManagement {
 			mode = tuitionTimetableList.get(i).getMode();
 		
 			
-			output += String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", ttId, price, start_date, end_date, mode);
+			output += String.format("%-15s %-10s %-15s %-15s %-20s\n", ttId, price, start_date, end_date, mode);
 		}
 		System.out.println(output);
 	}
@@ -396,7 +419,7 @@ public class TuitionManagement {
 		
 		for (int i = 0; i < tuitionTimetableList.size(); i++) {
 			String ttID = tuitionTimetableList.get(i).getTtId();
-			if (ttID == del_ttID) {
+			if (ttID.equals(del_ttID)) {
 				tuitionTimetableList.remove(i);
 				System.out.println("------------------------------");
 				System.out.println("Timetable removed.");
@@ -418,15 +441,12 @@ public class TuitionManagement {
 		String subjectGroup = Helper.readString("Enter teacher subject group >");
 	
 		teacherList.add(new ManageTeacher(name, gender, email, qualification, subjectGroup));
-	}
-	
-	public static void addTeacher(ArrayList<ManageTeacher> teacherList, ManageTeacher teacher) {
-		teacherList.add(teacher);
 		
 		System.out.println("------------------------------");
 		System.out.println("Teacher has been added.");
 		System.out.println("------------------------------");
 	}
+
 
 	// ============================== Option 2 View teacher for menuManager() JAYDEN  ==============================
 	
@@ -440,18 +460,18 @@ public class TuitionManagement {
 		
 		
 		//title will be set once
-		output = String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", "NAME", "GENDER",
+		output = String.format("%-10s %-10s %-25s %-20s %-20s\n", "NAME", "GENDER",
 				"EMAIL", "QUALIFICATION", "SUBJECT GROUP"); 
 		
 		for (int i = 0; i < teacherList.size(); i++) {
 			name = teacherList.get(i).getName();
 			gender = teacherList.get(i).getGender();
 			email = teacherList.get(i).getEmail();
-			qualification = teacherList.get(i).getEmail();
+			qualification = teacherList.get(i).getQualification();
 			subjectGroup = teacherList.get(i).getSubjectGroup();
 		
 			
-			output += String.format("%-10s %-20s %-15s %-25s %-20s %-10s\n", name, gender, email, qualification, subjectGroup);
+			output += String.format("%-10s %-10s %-25s %-20s %-20s\n", name, gender, email, qualification, subjectGroup);
 		}
 		System.out.println(output);
 	}
@@ -464,7 +484,7 @@ public class TuitionManagement {
 		
 		for (int i = 0; i < teacherList.size(); i++) {
 			String delName = teacherList.get(i).getName();
-			if (delTeacher.equals(delName)) {
+			if (delTeacher.equalsIgnoreCase(delName)) {
 				teacherList.remove(i);
 				System.out.println("------------------------------");
 				System.out.println("Teacher removed.");
@@ -529,7 +549,7 @@ public class TuitionManagement {
 
 		// ============================== Option 5 Delete tuition info for menuAdmin() YUNSAN ==============================
 		
-		public static String deleteTuition(ArrayList<Tuition> tuitionList) {
+		public static void deleteTuition(ArrayList<Tuition> tuitionList) {
 			
 			TuitionManagement.retrieveTuition(tuitionList); //print list
 			
@@ -551,17 +571,11 @@ public class TuitionManagement {
 					System.out.println("Invalid tuition code");
 					System.out.println("------------------------------");
 				}
-			
 			}
-			return code;	
 		}
+}
+		
 			
-		public static void deleteTuition(ArrayList<Tuition> tuitionList, Tuition tuition) {
-			
-				tuitionList.remove(tuition);
-			
-				}
-			}
 
 
 
